@@ -43,6 +43,14 @@ const App = () => {
     });
   };
 
+  const getByMostViews = () => {
+    fetch("http://127.0.0.1:5000/views")
+      .then((result) => result.json())
+      .then((data) => {
+        setData(data);
+      });
+  };
+
   return (
     <div>
       <h1>App</h1>
@@ -51,6 +59,7 @@ const App = () => {
       <input type="text" onChange={setChannelNameCB} value={channelName} />
       <input type="date" min="2019-04-08" max="2021-09-20" onChange={setDateTimeFunc} />
       <button onClick={getByTime}>Get By Date</button>
+      <button onClick={getByMostViews}>Get Random Video</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
