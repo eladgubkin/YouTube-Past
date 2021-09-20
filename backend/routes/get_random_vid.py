@@ -1,15 +1,11 @@
 from flask import jsonify
 from . import routes
 import random
-import json
-
-filename = './watch-history.json'
+from get_json_data import get_json_data
 
 @routes.route("/random")
 def random_video():
-    with open(filename, encoding='utf-8') as json_data:
-        data = json.load(json_data)
-
-        video = json.dumps(random.choice(data), indent=2)
+    data = get_json_data()
+    video = random.choice(data)
 
     return jsonify(video)
