@@ -54,12 +54,12 @@ const App = () => {
   return (
     <div>
       <h1>App</h1>
-      <button onClick={getRandomVideo}>Get Random Video</button>
-      <button onClick={getByChannel}>Get All Videos By Channel Name</button>
+      <button onClick={getRandomVideo}>Get a random video</button>
+      <button onClick={getByChannel}>Get all videos by channel name:</button>
       <input type="text" onChange={setChannelNameCB} value={channelName} />
       <input type="date" min="2019-04-08" max="2021-09-20" onChange={setDateTimeFunc} />
-      <button onClick={getByTime}>Get By Date</button>
-      <button onClick={getByMostViews}>Get Random Video</button>
+      <button onClick={getByTime}>Get by date</button>
+      <button onClick={getByMostViews}>Get the most viewed Video by you</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
