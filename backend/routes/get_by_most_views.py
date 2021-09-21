@@ -7,7 +7,7 @@ from operator import itemgetter
   
 @routes.route('/views')
 def get_by_most_views():
-    data = get_json_data()
+    data = get_json_data('watch-history')
 
 
     links_list = Counter(d['titleUrl'] for d in data if d.get('titleUrl'))

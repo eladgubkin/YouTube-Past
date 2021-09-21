@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 @routes.route('/time')
 def get_by_time():
     timestamp = request.args.to_dict()
-    data = get_json_data()
+    data = get_json_data('watch-history')
     videos = []
 
     for video in data:

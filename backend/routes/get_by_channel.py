@@ -5,9 +5,8 @@ from get_json_data import get_json_data
 
 @routes.route('/channel')
 def get_by_channel():
-
+    data = get_json_data('watch-history')
     channel_name = request.args.get('name')
-    data = get_json_data()
     videos = []
 
     for video in data:
