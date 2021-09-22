@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  color: #fff;
 }
 
 html {
@@ -8,8 +9,9 @@ html {
 }
 
 body {
-  background: #fff;
-  color: hsl(192, 100%, 9%);
+  background: #0f0c29;
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.15em;
   margin: 0;
