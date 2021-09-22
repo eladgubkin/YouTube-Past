@@ -10,7 +10,7 @@ def get_by_most_views():
     data = get_json_data('watch-history')
 
 
-    links_list = Counter(d['titleUrl'] for d in data if d.get('titleUrl'))
+    links_list = Counter(d['title'][8:] for d in data if d.get('title'))
     sorted_links_list = sorted(links_list.items(), key=itemgetter(1), reverse=True)
 
     # titles_and_urls = []
@@ -27,4 +27,6 @@ def get_by_most_views():
     #             titles_and_url['views'] = sorted_link[1]
 
 
-    return jsonify(sorted_links_list)
+
+    keys = ['title', 'views']
+    return jsonify([dict(zip(keys, l)) for l in sorted_links_list[2:25]])
