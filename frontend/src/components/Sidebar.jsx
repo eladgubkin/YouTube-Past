@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -9,34 +9,60 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 
-const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container }) => {
+const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container, setData }) => {
+  const getRandomVideo = () => {
+    fetch("http://127.0.0.1:5000/views")
+      .then((result) => result.json())
+      .then((data) => {
+        setData(data);
+      });
+  };
+
   const drawer = (
     <div>
-      <Toolbar></Toolbar>
+      <Toolbar>
+        <Typography variant="h6" noWrap component="div">
+          youtube_history
+        </Typography>
+      </Toolbar>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button onClick={getRandomVideo}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Most Viewed Videos" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <MailIcon />
+          </ListItemIcon>
+          <ListItemText primary="Most Watched" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Most Liked" />
+        </ListItem>
+        <Divider />
       </List>
     </div>
   );
 
   return (
-    <Box component="nav" sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }} aria-label="mailbox folders">
+    <Box
+      component="nav"
+      sx={{
+        width: { lg: drawerWidth },
+        flexShrink: { lg: 0 },
+      }}
+      aria-label="mailbox folders"
+    >
       <Drawer
         container={container}
         variant="temporary"
@@ -47,7 +73,11 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container }) => 
         }}
         sx={{
           display: { md: "block", lg: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: drawerWidth,
+            background: "#0f2027",
+          },
         }}
       >
         {drawer}
@@ -56,7 +86,11 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container }) => 
         variant="permanent"
         sx={{
           display: { xs: "none", lg: "block" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: drawerWidth,
+            background: "#0f2027",
+          },
         }}
         open={true}
       >

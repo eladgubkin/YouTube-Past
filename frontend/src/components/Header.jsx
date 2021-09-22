@@ -12,6 +12,7 @@ const Header = ({ drawerWidth, handleDrawerToggle }) => {
       sx={{
         width: { lg: `calc(100% - ${drawerWidth}px)` },
         ml: { lg: `${drawerWidth}px` },
+        background: "#0f2027",
       }}
     >
       <Toolbar>
@@ -25,7 +26,7 @@ const Header = ({ drawerWidth, handleDrawerToggle }) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Responsive drawer
+          Lol
         </Typography>
       </Toolbar>
     </AppBar>
