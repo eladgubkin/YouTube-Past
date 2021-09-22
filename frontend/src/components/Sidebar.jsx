@@ -90,6 +90,7 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container, setDa
             boxSizing: "border-box",
             width: drawerWidth,
             background: "#0f2027",
+            borderRight: "2px dashed grey",
           },
         }}
         open={true}
