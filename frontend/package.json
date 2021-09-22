@@ -8,6 +8,7 @@
     "del": "rimraf dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.0",
     "@mui/material": "^5.0.0",
@@ -15,6 +16,7 @@
     "@mui/styled-engine-sc": "^5.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "recharts": "^2.1.4",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
