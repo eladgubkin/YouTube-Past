@@ -35,21 +35,6 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen, container, setDa
           </ListItemIcon>
           <ListItemText primary="Most Viewed Videos" />
         </ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-            <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary="Most Watched" />
-        </ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Most Liked" />
-        </ListItem>
-        <Divider />
       </List>
     </div>
   );
