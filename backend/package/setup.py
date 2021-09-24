@@ -16,7 +16,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(),
     install_requires=[],
-    keywords=['python', 'sockets'],
+    keywords=['python', 'pandas'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
