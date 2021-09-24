@@ -1,7 +1,7 @@
 import pandas as pd
 import sys
-from watch_history import WatchHistory
-from search_history import SearchHistory
+from .watch_history import WatchHistory
+from .search_history import SearchHistory
 
 
 class YoutubeHistory(WatchHistory, SearchHistory):
@@ -31,8 +31,8 @@ class YoutubeHistory(WatchHistory, SearchHistory):
 
     def merge_dfs(self):
         self.merged = {
-            'watch_history': self.watch_df.to_dict(orient='records'),
-            'search_history': self.search_df.to_dict(orient='records')
+            'watchHistory': self.watch_df.to_dict(orient='records'),
+            'searchHistory': self.search_df.to_dict(orient='records')
         }
 
         return self.merged

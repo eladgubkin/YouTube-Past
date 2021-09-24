@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 
 
@@ -39,6 +38,4 @@ class WatchHistory:
         # get Channel ID from 'channelUrl'
         self.watch_df['channelId'] = self.watch_df['channelUrl'].str[-24:]
 
-        # display max rows
-        # with pd.option_context('display.max_rows', None, 'display.max_columns', None):
         return self.watch_df

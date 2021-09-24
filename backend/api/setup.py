@@ -8,7 +8,7 @@ LONG_DESCRIPTION = 'A Basic Hello Package long description'
 
 # Setting up
 setup(
-    name="youtube_history",
+    name="youtube_history_api",
     version=VERSION,
     author="Eladox (Elad Gubkin)",
     author_email="<eladox3@gmail.com>",

@@ -1,5 +1,6 @@
 import pandas as pd
-
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class SearchHistory:
     def __init__(self, search_df):
@@ -17,7 +18,7 @@ class SearchHistory:
         self.search_df['title'] = self.search_df['title'].str[13:]
 
         # these are stopwords - words we want excluded from our data
-        with open('stopwords.txt', encoding="utf8") as file:
+        with open(f'{dir_path}\stopwords.txt', encoding="utf8") as file:
             stop_words=file.read().split('\n')
 
         # remove any rows where the 'title' field is null
@@ -29,6 +30,7 @@ class SearchHistory:
         # remove any word that is in the stopword list
         self.search_df['title'] = self.search_df['title'].apply(lambda x: ' '.join([word for word in x.split() if word not in stop_words])).str.split(' ')
 
-        # display max rows
-        # with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+        # rename 'title' column to 'words'
+        self.search_df.rename({'title': 'words'}, axis=1, inplace=True)
+
         return self.search_df
