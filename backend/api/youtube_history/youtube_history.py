@@ -31,8 +31,8 @@ class YoutubeHistory(WatchHistory, SearchHistory):
 
     def merge_dfs(self):
         self.merged = {
-            'watchHistory': self.watch_df.to_dict(orient='records'),
-            'searchHistory': self.search_df.to_dict(orient='records')
+            "watchHistory": self.watch_df.to_json(orient='records'),
+            "searchHistory": self.search_df.to_json(orient='records')
         }
 
         return self.merged
