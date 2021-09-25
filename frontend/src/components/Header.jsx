@@ -25,9 +25,6 @@ const Header = ({ drawerWidth, handleDrawerToggle }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          Lol
-        </Typography>
       </Toolbar>
     </AppBar>
   );
