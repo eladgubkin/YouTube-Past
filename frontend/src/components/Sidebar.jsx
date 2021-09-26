@@ -12,8 +12,8 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
   const drawer = (
     <aside style={{ height: "100%", fontSize: "0.9em" }}>
       <Toolbar style={{ display: "flex", justifyContent: "space-between", margin: "10px 30px " }}>
-        <img src={ytLogo} alt="yt-logo.png" style={{ width: 60 }} />
-        <img src={ytMusicLogo} alt="yt-logo.png" style={{ width: 50, opacity: 0.2 }} />
+        <img src={ytLogo} alt="yt-logo.png" style={{ width: 60, cursor: "default" }} />
+        <img src={ytMusicLogo} alt="yt-logo.png" style={{ width: 50, opacity: 0.2, cursor: "pointer" }} />
       </Toolbar>
       <Divider />
       <List
@@ -24,7 +24,7 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
           justifyContent: "center",
         }}
       >
-        <ListItem style={{ justifyContent: "center", cursor: "pointer" }}>All Time</ListItem>
+        <ListItem style={{ justifyContent: "center", cursor: "default" }}>All Time</ListItem>
         <ListItem style={{ justifyContent: "center", opacity: 0.2, cursor: "pointer" }}>2018</ListItem>
         <ListItem style={{ justifyContent: "center", opacity: 0.2, cursor: "pointer" }}>2019</ListItem>
         <ListItem style={{ justifyContent: "center", opacity: 0.2, cursor: "pointer" }}>2020</ListItem>
