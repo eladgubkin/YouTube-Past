@@ -19,31 +19,31 @@ const Main = ({ data }) => {
 
       <Grid container>
         <Grid container item xs={12} md={6} lg={8}>
-          <Grid item xs={12} md={12} lg={12} style={{ border: "1px solid red", height: "400px" }}>
-            <TableWidget />
+          <Grid item xs={12} md={12} lg={12} style={{ border: "1px solid red", height: "400px", width: "100%" }}>
+            <TableWidget data={data["watchHistory"]} />
           </Grid>
-          <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px" }}>
-            <WordCloudWidget data={data} />
+          <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px", width: "100%" }}>
+            <WordCloudWidget data={data["searchHistory"]} />
           </Grid>
-          <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px" }}>
-            <StatisticsWidget />
+          <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px", width: "100%" }}>
+            <StatisticsWidget data={data} />
           </Grid>
         </Grid>
 
-        <Grid item xs={12} md={6} lg={4} style={{ border: "1px solid red", height: "800px" }}>
-          <TimelineWidget />
+        <Grid item xs={12} md={6} lg={4} style={{ border: "1px solid red", height: "800px", width: "100%" }}>
+          <TimelineWidget data={data} />
         </Grid>
 
-        <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px" }}>
-          <ChannelsWidget />
+        <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px", width: "100%" }}>
+          <ChannelsWidget data={data["watchHistory"]} />
         </Grid>
 
-        <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px" }}>
-          <VideosWidget />
+        <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px", width: "100%" }}>
+          <VideosWidget data={data["watchHistory"]} />
         </Grid>
 
-        <Grid item xs={12} md={12} lg={12} style={{ border: "1px solid red", height: "400px" }}>
-          <HeatmapWidget />
+        <Grid item xs={12} md={12} lg={12} style={{ border: "1px solid red" }}>
+          <HeatmapWidget data={data["watchHistory"]} />
         </Grid>
       </Grid>
     </Box>
