@@ -7,6 +7,7 @@ import { CssBaseline } from "@mui/material";
 
 const App = () => {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
   const [drawerWidth] = useState(300);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -22,11 +23,8 @@ const App = () => {
           watchHistory: JSON.parse(res.watchHistory),
           searchHistory: JSON.parse(res.searchHistory),
         });
-        // localStorage.setItem("data", data);
       });
   }, []);
-
-  // console.log(data);
 
   if (Object.keys(data).length === 0) {
     return <h1>Loading...</h1>;
@@ -36,7 +34,7 @@ const App = () => {
         <CssBaseline />
         <Header drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} />
         <Sidebar drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
-        <Main mobileOpen={mobileOpen} data={data["searchHistory"]} />
+        <Main mobileOpen={mobileOpen} data={data} />
       </Box>
     );
   }
