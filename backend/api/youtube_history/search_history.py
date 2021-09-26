@@ -9,8 +9,11 @@ class SearchHistory:
 
     def parse_search_history_data(self):
         # exclude 'Google Ads'
-        self.search_df = self.search_df.drop(self.search_df[self.search_df['details'].notna()].index)
-        
+        try:
+            self.search_df = self.search_df.drop(self.search_df[self.search_df['details'].notna()].index)
+        except KeyError:
+            pass
+
         # exclude 'products' and 'titleUrls'
         self.search_df = self.search_df.drop(columns=['products', 'details', 'titleUrl'], errors='ignore')
 
