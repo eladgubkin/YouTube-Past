@@ -30,7 +30,7 @@ class WatchHistory:
         self.watch_df['timesViewedChannel'] = self.watch_df.groupby(['channelUrl'])['channelUrl'].transform('count')
 
         # Sort by timesViewedVideo
-        self.watch_df = self.watch_df.sort_values(by=['timesViewedVideo'], ascending=True)
+        # self.watch_df = self.watch_df.sort_values(by=['timesViewedChannel'], ascending=False)
 
         # get Video ID from 'titleUrl'
         self.watch_df['videoId'] = self.watch_df['titleUrl'].str[-11:]
