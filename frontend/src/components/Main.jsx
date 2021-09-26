@@ -18,11 +18,10 @@ const Main = ({ data }) => {
       <Toolbar />
 
       <Grid container>
-        <Grid container xs={12} md={6} lg={8}>
+        <Grid container item xs={12} md={6} lg={8}>
           <Grid item xs={12} md={12} lg={12} style={{ border: "1px solid red", height: "400px" }}>
             <TableWidget />
           </Grid>
-
           <Grid item xs={12} md={6} lg={6} style={{ border: "1px solid red", height: "400px" }}>
             <WordCloudWidget data={data} />
           </Grid>
