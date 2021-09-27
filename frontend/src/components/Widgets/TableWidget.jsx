@@ -1,30 +1,37 @@
 import React from "react";
-// import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 
-const TableWidget = ({ data }) => {
+const columns = [
+  { field: "id", headerName: "Title", width: 200 },
+  { field: "channelName", headerName: "Channel", width: 200 },
+  { field: "time", headerName: "Time", width: 200 },
+  // {
+  //   field: "fullName",
+  //   headerName: "Full name",
+  //   description: "This column has a value getter and is not sortable.",
+  //   sortable: false,
+  //   width: 160,
+  //   valueGetter: (params) =>
+  //     `${params.getValue(params.id, "firstName") || ""} ${params.getValue(params.id, "lastName") || ""}`,
+  // },
+];
+
+const rows = [
+  { id: 1, channelName: "Snow", time: "Jon" },
+  { id: 2, channelName: "Lannister", time: "Cersei" },
+  { id: 3, channelName: "Lannister", time: "Jaime" },
+  { id: 4, channelName: "Stark", time: "Arya" },
+  { id: 5, channelName: "Targaryen", time: "Daenerys" },
+  { id: 6, channelName: "Melisandre", time: "Ok" },
+  { id: 7, channelName: "Clifford", time: "Ferrara" },
+  { id: 8, channelName: "Frances", time: "Rossini" },
+  { id: 9, channelName: "Roxie", time: "Harvey" },
+];
+
+export default function DataTable() {
   return (
-    <>
-      {/* <div style={{ height: 400, width: "100%" }}>
-        <div style={{ display: "flex", height: "100%" }}>
-          <div style={{ flexGrow: 1 }}>
-            <DataGrid
-              columns={[{ field: "video" }, { field: "channel" }, { field: "views" }, { field: "date" }]}
-              rows={data.map((video) => {
-                return {
-                  video: video.title,
-                  channel: video.channelName,
-                  views: video.timesViewedVideo,
-                  date: video.time,
-                };
-              })}
-            />
-          </div>
-        </div>
-      </div> */}
-
-      <h1>Table</h1>
-    </>
+    <div style={{ width: "100%", height: 400 }}>
+      <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+    </div>
   );
-};
-
-export default TableWidget;
+}
