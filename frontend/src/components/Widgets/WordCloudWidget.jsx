@@ -65,26 +65,27 @@ const WordCloudWidget = ({ data }) => {
     series: [
       {
         type: "wordcloud",
-        data: wordCloudData.splice(-100, Math.ceil(wordCloudData.length)),
-        rotation: {
-          from: 0,
-          to: 0,
-        },
+        data: wordCloudData.splice(-150, Math.ceil(wordCloudData.length)),
+        // rotation: {
+        //   from: 0,
+        //   to: 0,
+        // },
         minFontSize: 7,
         style: {
           fontFamily: "Arial",
+          textTransform: "uppercase",
         },
         name: "Number of searches",
       },
     ],
 
     chart: {
-      backgroundColor: "#0f0c29",
+      backgroundColor: "#1B2845",
       useHTML: true,
     },
 
     title: {
-      text: "Top 100 Searched keywords",
+      text: "Your Top 150 Most Searched Keywords:",
       style: {
         color: "#fff",
         fontWeight: "bold",
@@ -96,12 +97,14 @@ const WordCloudWidget = ({ data }) => {
     },
 
     tooltip: {
+      useHTML: true,
+      borderRadius: 15,
+      backgroundColor: "#000",
       animation: true,
       followPointer: true,
-      borderRadius: 20,
-      backgroundColor: "#333",
       style: {
         color: "#fff",
+        textTransform: "uppercase",
       },
     },
   };
