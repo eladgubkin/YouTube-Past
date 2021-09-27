@@ -31,26 +31,16 @@ const ChannelsWidget = ({ data }) => {
   const options = {
     chart: {
       type: "cylinder",
-      backgroundColor: "#0f0c29",
-      options3d: {
-        enabled: true,
-        alpha: 0,
-        beta: 0,
-        depth: 0,
-        viewDistance: 0,
-      },
+      backgroundColor: "#1B2845",
     },
     title: {
-      text: "Top YouTube Channels",
+      text: "Your Top 20 YouTube Channels",
       style: {
         color: "#fff",
         fontWeight: "bold",
       },
     },
     plotOptions: {
-      column: {
-        depth: 0,
-      },
       series: {
         colorByPoint: true,
       },
@@ -68,9 +58,6 @@ const ChannelsWidget = ({ data }) => {
         useHTML: true,
         align: "center",
       },
-      // reversed: {
-      //   enabled: true,
-      // },
     },
 
     tooltip: {
@@ -96,6 +83,23 @@ const ChannelsWidget = ({ data }) => {
         data: newData,
       },
     ],
+
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            yAxis: {
+              labels: {
+                enabled: false,
+              },
+            },
+          },
+        },
+      ],
+    },
   };
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;

@@ -35,26 +35,16 @@ const VideosWidget = ({ data }) => {
   const options = {
     chart: {
       type: "cylinder",
-      backgroundColor: "#0f0c29",
-      options3d: {
-        enabled: true,
-        alpha: 0,
-        beta: 0,
-        depth: 0,
-        viewDistance: 0,
-      },
+      backgroundColor: "#1B2845",
     },
     title: {
-      text: "Top YouTube Videos",
+      text: "Your Top 20 YouTube Videos",
       style: {
         color: "#fff",
         fontWeight: "bold",
       },
     },
     plotOptions: {
-      column: {
-        depth: 0,
-      },
       series: {
         colorByPoint: true,
       },
@@ -97,6 +87,23 @@ const VideosWidget = ({ data }) => {
         data: newData,
       },
     ],
+
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            yAxis: {
+              labels: {
+                enabled: false,
+              },
+            },
+          },
+        },
+      ],
+    },
   };
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;
