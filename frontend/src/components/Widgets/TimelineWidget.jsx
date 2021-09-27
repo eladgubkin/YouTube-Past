@@ -2,9 +2,9 @@ import React from "react";
 
 const TimelineWidget = () => {
   return (
-    <>
-      <h1>Timeline Widget</h1>
-    </>
+    <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: "100%", height: "100%", background: "#1B2845" }}>hello</div>
+    </div>
   );
 };
 

@@ -20,7 +20,7 @@ const options = {
     marginTop: 40,
     marginBottom: 80,
     plotBorderWidth: 1,
-    backgroundColor: "#0f0c29",
+    backgroundColor: "#1B2845",
   },
 
   title: {

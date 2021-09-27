@@ -30,8 +30,15 @@ const rows = [
 
 export default function DataTable() {
   return (
-    <div style={{ width: "100%", height: 400 }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+    <div style={{ width: "100%", height: 400, background: "#1B2845", marginTop: 20 }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        style={{ border: 0 }}
+      />
     </div>
   );
 }

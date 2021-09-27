@@ -9,9 +9,7 @@ html {
 }
 
 body {
-  background: #0f0c29;
-  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: #2e4057 !important;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.15em;
   margin: 0;

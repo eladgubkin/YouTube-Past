@@ -12,7 +12,7 @@ const Header = ({ drawerWidth, handleDrawerToggle }) => {
       sx={{
         width: { lg: `calc(100% - ${drawerWidth}px)` },
         ml: { lg: `${drawerWidth}px` },
-        background: "#0f2027",
+        background: "#1B2845",
       }}
     >
       <Toolbar>

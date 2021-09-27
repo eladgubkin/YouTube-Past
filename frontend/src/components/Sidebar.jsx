@@ -107,7 +107,7 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
-            background: "#0f2027",
+            background: "#1B2845",
           },
         }}
       >
@@ -120,7 +120,7 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
-            background: "#0f2027",
+            background: "#1B2845",
             borderRight: "1px solid grey",
           },
         }}
