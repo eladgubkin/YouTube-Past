@@ -1,8 +1,18 @@
 import React from "react";
 import Highcharts from "highcharts";
 import PieChart from "highcharts-react-official";
+import findOccurence from "../../utils/findOccurence";
 
 const PieWidget = ({ data }) => {
+  const pieData = findOccurence(data, "timesViewedVideo")
+    .sort((a, b) => (a.occurrence > b.occurrence ? 1 : b.occurrence > a.occurrence ? -1 : 0))
+    .map((item) => {
+      return {
+        name: `Watched ${item.timesViewedVideo} times`,
+        y: item.occurrence,
+      };
+    });
+
   const options = {
     chart: {
       plotBackgroundColor: null,
@@ -12,7 +22,7 @@ const PieWidget = ({ data }) => {
       backgroundColor: "#1B2845",
     },
     title: {
-      text: `Out of ${data.length} Videos:`,
+      text: `${data.length} Total Videos:`,
       style: {
         color: "#fff",
         fontWeight: "bold",
@@ -29,6 +39,19 @@ const PieWidget = ({ data }) => {
         valueSuffix: "%",
       },
     },
+    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+      return {
+        radialGradient: {
+          cx: 0.5,
+          cy: 0.3,
+          r: 0.7,
+        },
+        stops: [
+          [0, color],
+          [1, Highcharts.color(color).brighten(-0.3).get("rgb")], // darken
+        ],
+      };
+    }),
     plotOptions: {
       pie: {
         allowPointSelect: true,
@@ -47,34 +70,9 @@ const PieWidget = ({ data }) => {
     },
     series: [
       {
-        name: "Brands",
+        name: "Percentage",
         colorByPoint: true,
-        data: [
-          {
-            name: "Watched once",
-            y: 61.41,
-          },
-          {
-            name: "Watched 2 times",
-            y: 11.84,
-          },
-          {
-            name: "Watched 5 times",
-            y: 10.85,
-          },
-          {
-            name: "Watched 10 times",
-            y: 4.67,
-          },
-          {
-            name: "Watched 25 times",
-            y: 4.18,
-          },
-          {
-            name: "Watched 50 times",
-            y: 2.1,
-          },
-        ],
+        data: pieData,
       },
     ],
   };
