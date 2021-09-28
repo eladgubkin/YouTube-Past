@@ -121,7 +121,6 @@ const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
             boxSizing: "border-box",
             width: drawerWidth,
             background: "#1B2845",
-            borderRight: "1px solid grey",
           },
         }}
         open={true}
