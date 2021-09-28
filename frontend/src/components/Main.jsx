@@ -13,31 +13,22 @@ import HeatmapWidget from "./Widgets/HeatmapWidget";
 import PieWidget from "./Widgets/PieWidget";
 
 const Main = ({ data }) => {
+  const { watchHistory, searchHistory } = data;
+
   return (
-    <Box component="main" sx={{ flexGrow: 1, textAlign: "center" }}>
+    <Box component="main" sx={{ flexGrow: 1 }}>
       <Toolbar />
 
       <Grid container style={{ padding: 20 }} spacing={2}>
         <Grid container item xs={12} md={6} lg={8}>
           <Grid item xs={12} md={12} lg={12} style={{ height: "400px", width: "100%" }}>
-            <HeatmapWidget data={data["watchHistory"]} />
+            <HeatmapWidget data={watchHistory} />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            lg={6}
-            style={{
-              height: "400px",
-              width: "100%",
-              marginTop: "20px",
-              boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-            }}
-          >
-            <WordCloudWidget data={data["searchHistory"]} />
+          <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%", marginTop: "20px" }}>
+            <WordCloudWidget data={searchHistory} />
           </Grid>
           <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%", marginTop: 20 }}>
-            <PieWidget data={data["watchHistory"]} />
+            <PieWidget data={watchHistory} />
           </Grid>
         </Grid>
 
@@ -46,15 +37,15 @@ const Main = ({ data }) => {
         </Grid>
 
         <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%" }}>
-          <ChannelsWidget data={data["watchHistory"]} />
+          <ChannelsWidget data={watchHistory} />
         </Grid>
 
         <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%" }}>
-          <VideosWidget data={data["watchHistory"]} />
+          <VideosWidget data={watchHistory} />
         </Grid>
 
         <Grid item xs={12} md={12} lg={12}>
-          <TableWidget data={data["watchHistory"]} />
+          <TableWidget data={watchHistory} />
         </Grid>
       </Grid>
     </Box>
