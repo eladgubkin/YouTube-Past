@@ -18,7 +18,15 @@ const ChannelsWidget = ({ data }) => {
     );
 
     newData.forEach((videoObj) => {
-      array.push([videoObj.timesViewedChannel, videoObj.channelName]);
+      array.push([
+        `<a href="${
+          videoObj.channelUrl
+        }" target="_blank" style="text-decoration: none; font-size:14px; border-radius: 50%;">${
+          videoObj.channelName ? videoObj.channelName.charAt(0).toUpperCase() : videoObj.channelName
+        }</a>`,
+        videoObj.timesViewedChannel,
+        videoObj.channelName,
+      ]);
     });
 
     setNewData(
@@ -79,7 +87,7 @@ const ChannelsWidget = ({ data }) => {
 
     series: [
       {
-        keys: ["y", "channelName"],
+        keys: ["name", "y", "channelName"],
         data: newData,
       },
     ],

@@ -19,7 +19,7 @@ const VideosWidget = ({ data }) => {
 
     newData.forEach((videoObj) => {
       array.push([
-        // `<span><a href="${videoObj.titleUrl}" target="_blank"><img src="https://i.ytimg.com/vi_webp/${videoObj.videoId}/mqdefault.webp" style="width: 30px;"/><br></span></a>`,
+        `<a href="${videoObj.titleUrl}" target="_blank"><img style="width:30px;border-radius:5px" src="https://i.ytimg.com/vi_webp/${videoObj.videoId}/mqdefault.webp"/></a>`,
         videoObj.timesViewedVideo,
         videoObj.title,
       ]);
@@ -83,7 +83,7 @@ const VideosWidget = ({ data }) => {
 
     series: [
       {
-        keys: ["y", "title"],
+        keys: ["name", "y", "title"],
         data: newData,
       },
     ],
