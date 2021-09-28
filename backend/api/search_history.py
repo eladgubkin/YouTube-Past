@@ -21,7 +21,7 @@ class SearchHistory:
         self.search_df['title'] = self.search_df['title'].str[13:]
 
         # these are stopwords - words we want excluded from our data
-        with open(f'{dir_path}\data\stopwords.txt', encoding="utf8") as file:
+        with open(f'{dir_path}/data/stopwords.txt', encoding="utf8") as file:
             stop_words=file.read().split('\n')
 
         # remove any rows where the 'title' field is null
