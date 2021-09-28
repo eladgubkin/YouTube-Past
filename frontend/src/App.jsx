@@ -31,7 +31,7 @@ const App = () => {
   } else {
     return (
       <Box sx={{ display: "flex", height: "100%" }}>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <Header drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} />
         <Sidebar drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
         <Main mobileOpen={mobileOpen} data={data} />
