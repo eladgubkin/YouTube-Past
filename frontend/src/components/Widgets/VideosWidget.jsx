@@ -19,7 +19,12 @@ const VideosWidget = ({ data }) => {
 
     newData.forEach((videoObj) => {
       array.push([
-        `<a href="${videoObj.titleUrl}" target="_blank"><img style="width:30px;border-radius:5px" src="https://i.ytimg.com/vi_webp/${videoObj.videoId}/mqdefault.webp"/></a>`,
+        // `<a href="${videoObj.titleUrl}" target="_blank"><img style="width:30px;border-radius:50%" src="https://i.ytimg.com/vi_webp/${videoObj.videoId}/mqdefault.webp"/></a>`,
+        `<a href="${
+          videoObj.titleUrl
+        }" target="_blank" style="text-decoration: none; font-size:14px; border-radius: 50%;">${
+          videoObj.title ? videoObj.title.charAt(0).toUpperCase() : videoObj.title
+        }</a>`,
         videoObj.timesViewedVideo,
         videoObj.title,
       ]);
