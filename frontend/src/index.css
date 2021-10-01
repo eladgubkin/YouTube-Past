@@ -9,12 +9,12 @@ html {
 }
 
 body {
+  width: 100%;
+  height: 100%;
   background: #2e4057 !important;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.15em;
   margin: 0;
-  width: 100%;
-  height: 100%;
 }
 
 #root {
