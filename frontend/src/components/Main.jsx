@@ -1,7 +1,15 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import { Grid } from "@mui/material";
+import {
+  StyledMain,
+  StyledHeatmap,
+  StyledTimeline,
+  StyledWordcloud,
+  StyledPiephart,
+  StyledBarchart1,
+  StyledBarchart2,
+  StyledTable,
+  StyledInnerGrid,
+} from "./Main.styled";
 
 // Widgets
 import TableWidget from "./Widgets/TableWidget";
@@ -16,17 +24,43 @@ const Main = ({ data }) => {
   const { watchHistory, searchHistory } = data;
 
   return (
-    <Box component="main" sx={{ flexGrow: 1 }}>
-      <Toolbar />
+    <StyledMain>
+      <StyledInnerGrid>
+        <StyledHeatmap>
+          <h1>Heatmap</h1>
+        </StyledHeatmap>
+        <StyledWordcloud>
+          <h1>Wordcloud</h1>
+        </StyledWordcloud>
+        <StyledPiephart>
+          <h1>Piechart</h1>
+        </StyledPiephart>
+      </StyledInnerGrid>
 
-      <Grid container style={{ padding: 20 }} spacing={2}>
+      <StyledTimeline>
+        <h1>Timeline</h1>
+      </StyledTimeline>
+
+      <StyledBarchart1>
+        <h1>Barchart1</h1>
+      </StyledBarchart1>
+      <StyledBarchart2>
+        <h1>Barchart2</h1>
+      </StyledBarchart2>
+      <StyledTable>
+        <h1>Table</h1>
+      </StyledTable>
+
+      {/* <Grid container style={{ padding: 20 }} spacing={2}>
         <Grid container item xs={12} md={6} lg={8}>
           <Grid item xs={12} md={12} lg={12} style={{ height: "400px", width: "100%" }}>
             <HeatmapWidget data={watchHistory} />
           </Grid>
+
           <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%", marginTop: "20px" }}>
             <WordCloudWidget data={searchHistory} />
           </Grid>
+
           <Grid item xs={12} md={6} lg={6} style={{ height: "400px", width: "100%", marginTop: 20 }}>
             <PieWidget data={watchHistory} />
           </Grid>
@@ -47,8 +81,8 @@ const Main = ({ data }) => {
         <Grid item xs={12} md={12} lg={12}>
           <TableWidget data={watchHistory} />
         </Grid>
-      </Grid>
-    </Box>
+      </Grid> */}
+    </StyledMain>
   );
 };
 
