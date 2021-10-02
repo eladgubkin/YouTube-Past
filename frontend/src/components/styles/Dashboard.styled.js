@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const StyledMain = styled.main`
-  width: 100%;
+export const StyledDashboard = styled.main`
+  margin-left: ${({ isOpen }) => (isOpen ? "300px" : 0)};
+  width: ${({ isOpen }) => (isOpen ? "calc(100% - 300px)" : "100%")};
   height: 100%;
   display: grid;
+  padding: 20px;
   grid-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
@@ -11,6 +13,22 @@ export const StyledMain = styled.main`
     "inner-grid inner-grid inner-grid timeline"
     "barchart1 barchart1 barchart2 barchart2"
     "table table table table";
+
+  @media (max-width: 1324px) {
+    grid-template-areas:
+      "inner-grid inner-grid timeline timeline"
+      "barchart1 barchart1 barchart2 barchart2"
+      "table table table table";
+  }
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      "inner-grid inner-grid inner-grid inner-grid"
+      "timeline timeline timeline timeline"
+      "barchart1 barchart1 barchart1 barchart1"
+      "barchart2 barchart2 barchart2 barchart2"
+      "table table table table";
+  }
 `;
 
 export const StyledInnerGrid = styled.section`
@@ -21,6 +39,13 @@ export const StyledInnerGrid = styled.section`
   grid-template-areas:
     "heatmap heatmap"
     "wordcloud piechart";
+
+  @media (max-width: 1324px) {
+    grid-template-areas:
+      "heatmap heatmap"
+      "wordcloud wordcloud"
+      "piechart piechart";
+  }
 `;
 
 export const StyledHeatmap = styled.section`
