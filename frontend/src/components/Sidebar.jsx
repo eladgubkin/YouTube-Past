@@ -1,62 +1,80 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
-import ytLogo from "../yt-logo.png";
-import ytMusicLogo from "../yt-music-logo.png";
-import List from "@mui/material/List";
-import { ListItem } from "@mui/material";
+import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from "react-icons/fa";
+import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
-const Sidebar = ({ drawerWidth, handleDrawerToggle, mobileOpen }) => {
-  const drawer = (
-    <aside style={{ height: "100%", fontSize: "0.9em" }}>
-      <Toolbar >Toolbar</Toolbar>
-    </aside>
-  );
-
+const Sidebar = ({ collapsed, toggled, handleToggleSidebar }) => {
   return (
-    <Box
-      component="nav"
-      sx={{
-        width: { lg: drawerWidth },
-        flexShrink: { lg: 0 },
-      }}
-      aria-label="mailbox folders"
-    >
-      <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { md: "block", lg: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-            background: "#1B2845",
-          },
-        }}
-      >
-        {drawer}
-      </Drawer>
-      <Drawer
-        variant="permanent"
-        sx={{
-          display: { xs: "none", lg: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-            background: "#1B2845",
-          },
-        }}
-        open={true}
-      >
-        {drawer}
-      </Drawer>
-    </Box>
+    <ProSidebar collapsed={collapsed} toggled={toggled} breakPoint="md" onToggle={handleToggleSidebar}>
+      <SidebarHeader>
+        <div
+          style={{
+            padding: "24px",
+            textTransform: "uppercase",
+            fontWeight: "bold",
+            fontSize: 14,
+            letterSpacing: "1px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          "sidebarTitle"
+        </div>
+      </SidebarHeader>
+
+      <SidebarContent>
+        <Menu iconShape="circle">
+          <MenuItem icon={<FaTachometerAlt />} suffix={<span className="badge red">"new"</span>}>
+            "dashboard"
+          </MenuItem>
+          <MenuItem icon={<FaGem />}>"components"</MenuItem>
+        </Menu>
+        <Menu iconShape="circle">
+          <SubMenu suffix={<span className="badge yellow">3</span>} title="withSuffix" icon={<FaRegLaughWink />}>
+            <MenuItem>"submenu"</MenuItem>
+            <MenuItem>"submenu"</MenuItem>
+            <MenuItem>"submenu"</MenuItem>
+          </SubMenu>
+          <SubMenu prefix={<span className="badge gray">3</span>} title="withPrefix" icon={<FaHeart />}>
+            <MenuItem>"submenu"</MenuItem>
+            <MenuItem>"submenu"</MenuItem>
+            <MenuItem>"submenu"</MenuItem>
+          </SubMenu>
+          <SubMenu title="multiLevel" icon={<FaList />}>
+            <MenuItem>"submenu"</MenuItem>
+            <MenuItem>"submenu"</MenuItem>
+            <SubMenu title={`$"submenu" })} 3`}>
+              <MenuItem>"submenu"</MenuItem>
+              <MenuItem>"submenu"</MenuItem>
+              <SubMenu title={`$"submenu" })} 3.3`}>
+                <MenuItem>"submenu"</MenuItem>
+                <MenuItem>"submenu"</MenuItem>
+                <MenuItem>"submenu"</MenuItem>
+              </SubMenu>
+            </SubMenu>
+          </SubMenu>
+        </Menu>
+      </SidebarContent>
+
+      <SidebarFooter style={{ textAlign: "center" }}>
+        <div
+          className="sidebar-btn-wrapper"
+          style={{
+            padding: "20px 24px",
+          }}
+        >
+          <a
+            href="https://github.com/azouaoui-med/react-pro-sidebar"
+            target="_blank"
+            className="sidebar-btn"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+            <span style={{ whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>"viewSource"</span>
+          </a>
+        </div>
+      </SidebarFooter>
+    </ProSidebar>
   );
 };
 
