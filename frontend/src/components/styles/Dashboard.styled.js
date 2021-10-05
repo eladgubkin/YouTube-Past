@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyledDashboard = styled.main`
-  margin-left: ${({ isOpen }) => (isOpen ? "300px" : 0)};
-  width: ${({ isOpen }) => (isOpen ? "calc(100% - 300px)" : "100%")};
+  width: 100%;
   height: 100%;
   display: grid;
   padding: 20px;
@@ -54,6 +53,7 @@ export const StyledHeatmap = styled.section`
 
 export const StyledTimeline = styled.section`
   grid-area: timeline;
+  background: #1b2845;
 `;
 
 export const StyledWordcloud = styled.section`
@@ -74,4 +74,7 @@ export const StyledBarchart2 = styled.section`
 
 export const StyledTable = styled.section`
   grid-area: table;
+  width: 100%;
+  height: 400px;
+  background: #1b2845;
 `;
