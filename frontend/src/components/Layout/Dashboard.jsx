@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { StyledDashboard } from "../styles/Dashboard.styled";
 import { DataContext } from "../contexts/data";
 
-import { Grid } from "@mui/material";
 import {
   StyledHeatmap,
   StyledTimeline,
@@ -14,43 +13,44 @@ import {
   StyledInnerGrid,
 } from "../styles/Dashboard.styled";
 
+import HeatmapWidget from "../Widgets/HeatmapWidget";
 import PieWidget from "../Widgets/PieWidget";
 import WordcloudWidget from "../Widgets/WordCloudWidget";
+import TimelineWidget from "../Widgets/TimelineWidget";
+import VideosWidget from "../Widgets/VideosWidget";
+import ChannelsWidget from "../Widgets/ChannelsWidget";
+import TableWidget from "../Widgets/TableWidget";
 
 const Dashboard = () => {
   const data = useContext(DataContext);
 
-  console.log(data);
-
   return (
     <StyledDashboard>
       <StyledInnerGrid>
-        <StyledHeatmap data={data}>
-          <PieWidget data={data["watchHistory"]} />
+        <StyledHeatmap>
+          <HeatmapWidget data={data["watchHistory"]} />
         </StyledHeatmap>
         <StyledWordcloud>
           <WordcloudWidget data={data["searchHistory"]} />
         </StyledWordcloud>
         <StyledPiephart>
-          <h1>Piechart</h1>
+          <PieWidget data={data["watchHistory"]} />
         </StyledPiephart>
       </StyledInnerGrid>
 
-      <Grid container style={{ padding: 20 }} spacing={2}>
-        <StyledTimeline>
-          <h1>Timeline</h1>
-        </StyledTimeline>
+      <StyledTimeline>
+        <TimelineWidget />
+      </StyledTimeline>
 
-        <StyledBarchart1>
-          <h1>Barchart1</h1>
-        </StyledBarchart1>
-        <StyledBarchart2>
-          <h1>Barchart2</h1>
-        </StyledBarchart2>
-        <StyledTable>
-          <h1>Table</h1>
-        </StyledTable>
-      </Grid>
+      <StyledBarchart1>
+        <VideosWidget data={data["watchHistory"]} />
+      </StyledBarchart1>
+      <StyledBarchart2>
+        <ChannelsWidget data={data["watchHistory"]} />
+      </StyledBarchart2>
+      <StyledTable>
+        <TableWidget />
+      </StyledTable>
     </StyledDashboard>
   );
 };
