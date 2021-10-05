@@ -5,7 +5,9 @@ import findOccurence from "../../utils/findOccurence";
 
 const PieWidget = ({ data }) => {
   const pieData = findOccurence(data, "timesViewedVideo")
-    .sort((a, b) => (a.occurrence > b.occurrence ? 1 : b.occurrence > a.occurrence ? -1 : 0))
+    .sort((a, b) =>
+      a.occurrence > b.occurrence ? 1 : b.occurrence > a.occurrence ? -1 : 0
+    )
     .map((item) => {
       return {
         name: `Watched ${item.timesViewedVideo} times`,
@@ -77,19 +79,7 @@ const PieWidget = ({ data }) => {
     ],
   };
 
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        paddingLeft: 20,
-      }}
-    >
-      <div style={{ width: "100%", height: "100%", background: "#1B2845" }}>
-        <PieChart highcharts={Highcharts} options={options} />
-      </div>
-    </div>
-  );
+  return <PieChart highcharts={Highcharts} options={options} />;
 };
 
 export default PieWidget;
