@@ -4,7 +4,7 @@ import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import {
+import Layout, {
   Root,
   getHeader,
   getDrawerSidebar,
@@ -17,6 +17,7 @@ import {
 } from "@mui-treasury/layout";
 
 import { TextSidebar } from "@mui-treasury/mockup/sidebars";
+import useWindowSize from "../../hooks/useWindowSize";
 
 // Component:
 import HeaderContent from "./Header";
@@ -56,8 +57,14 @@ const useStyles = makeStyles(() => ({
 
 const CustomStylesDemo = () => {
   const styles = useStyles();
+
   return (
-    <Root scheme={fixedScheme}>
+    <Root
+      scheme={fixedScheme}
+      initialState={{
+        sidebar: { open: true, collapsed: true },
+      }}
+    >
       <CssBaseline />
       <Header>
         <Toolbar>
@@ -69,9 +76,7 @@ const CustomStylesDemo = () => {
         sidebarId={"primarySidebar"}
         PaperProps={{ className: styles.sidebar }}
       >
-        <SidebarContent>
-          <TextSidebar />
-        </SidebarContent>
+        <SidebarContent>{/* <TextSidebar /> */}</SidebarContent>
         <CollapseBtn className={cx(styles.collapseBtn)} />
       </DrawerSidebar>
       <Content className={styles.content}>
