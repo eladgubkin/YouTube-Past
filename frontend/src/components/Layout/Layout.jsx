@@ -72,11 +72,10 @@ const CustomStylesDemo = () => {
           <HeaderContent />
         </Toolbar>
       </Header>
-      <DrawerSidebar
-        sidebarId={"primarySidebar"}
-        PaperProps={{ className: styles.sidebar }}
-      >
-        <SidebarContent>{/* <TextSidebar /> */}</SidebarContent>
+      <DrawerSidebar sidebarId={"primarySidebar"} PaperProps={{ className: styles.sidebar }}>
+        <SidebarContent>
+          <TextSidebar />
+        </SidebarContent>
         <CollapseBtn className={cx(styles.collapseBtn)} />
       </DrawerSidebar>
       <Content className={styles.content}>
