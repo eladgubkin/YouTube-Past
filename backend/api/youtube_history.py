@@ -12,7 +12,7 @@ class YoutubeHistory(WatchHistory, SearchHistory):
         SearchHistory.__init__(self, self.search_df)
         self.merged = {}
 
-    def read_file(self):
+    def read_files(self):
         try:
             watch_history_file, search_history_file = sys.argv[1:]
         except IndexError and ValueError:
@@ -39,7 +39,7 @@ class YoutubeHistory(WatchHistory, SearchHistory):
 
 
     def get_data(self):
-        self.read_file()
+        self.read_files()
         self.parse_watch_history_data()
         self.parse_search_history_data()
         return self.merge_dfs()
