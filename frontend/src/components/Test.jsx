@@ -1,5 +1,10 @@
 import React from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "http://localhost:5000/graphql",
@@ -11,7 +16,7 @@ const Test = () => {
     .query({
       query: gql`
         query {
-          hello(name: "Eladox")
+          hello
         }
       `,
     })
