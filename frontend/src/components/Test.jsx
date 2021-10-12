@@ -4,6 +4,7 @@ import {
   InMemoryCache,
   ApolloProvider,
   gql,
+  useMutation,
 } from "@apollo/client";
 
 const client = new ApolloClient({
@@ -11,17 +12,22 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const Test = () => {
-  client
-    .query({
-      query: gql`
-        query {
-          hello
-        }
-      `,
-    })
-    .then((result) => console.log(result.data));
+const INCREMENT_COUNTER = gql`
+  mutation myFirstMutation {
+    createPerson(personData: { name: "Peter", age: 24 }) {
+      person {
+        name
+        age
+        __typename
+      }
+    }
+  }
+`;
 
+const Test = () => {
+  const [{ data, loading, error }] = useMutation(INCREMENT_COUNTER);
+
+  console.log(data);
   return (
     <ApolloProvider client={client}>
       <h1>Lol</h1>
