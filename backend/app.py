@@ -1,20 +1,28 @@
-from flask import Flask
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
-from flask_graphql import GraphQLView
-from graphene import Schema
-from mutations import MyMutations, MyQueries
-
+import pandas as pd
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret'
 CORS(app)
 
-schema = Schema(query=MyQueries, mutation=MyMutations)
 
-app.add_url_rule('/graphql', view_func=GraphQLView.as_view(
-    'graphql',
-    schema=schema,
-    graphiql=True,
-))
+@app.route('/file/upload', methods=['POST'])
+def handle_file_upload():
+    # file = request.files['file']
+    # session[file.filename] = pd.read_json(file)
+    session['username'] = 'admin'
+    print(session)
+
+
+    return "", 201
+
+
+
+@app.route('/', methods=['GET'])
+def hello_world():
+    print(session)
+    return jsonify("Lol"), 201
 
 
 if __name__ == '__main__':
