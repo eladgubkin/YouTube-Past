@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
-// import { DataContext } from "./components/contexts/data";
-// import Layout from "./components/Layout/Layout";
 import Test from "./components/Test";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache(),
+});
 
 const App = () => {
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/", { method: "POST" })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setData({
-  //         watchHistory: JSON.parse(res.watchHistory),
-  //         searchHistory: JSON.parse(res.searchHistory),
-  //       });
-  //     });
-  // }, []);
-
   return (
-    // <DataContext.Provider value={data}>
-    // {data ? <Layout /> : <h1>Loading...</h1>}
-    <Test />
-    // </DataContext.Provider>
+    <ApolloProvider client={client}>
+      <Test />
+    </ApolloProvider>
   );
 };
 
