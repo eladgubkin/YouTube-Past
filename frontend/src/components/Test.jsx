@@ -1,38 +1,28 @@
 import React from "react";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-  useMutation,
-} from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
+import FileUpload from "./FileUpload";
 
-const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
-  cache: new InMemoryCache(),
-});
-
-const INCREMENT_COUNTER = gql`
-  mutation myFirstMutation {
-    createPerson(personData: { name: "Peter", age: 24 }) {
-      person {
-        name
-        age
-        __typename
-      }
-    }
+const GET_DASHBOARD = gql`
+  {
+    pieChart
+    wordCloud
+    table
+    timeline
+    heatmap
+    barChart1
+    barChart2
   }
 `;
 
 const Test = () => {
-  const [{ data, loading, error }] = useMutation(INCREMENT_COUNTER);
+  // const { loading, error, data } = useQuery(GET_DASHBOARD);
 
-  console.log(data);
-  return (
-    <ApolloProvider client={client}>
-      <h1>Lol</h1>
-    </ApolloProvider>
-  );
+  // if (loading) console.log("loading...");
+  // if (error) console.log(error);
+
+  // console.log(data);
+
+  return <FileUpload />;
 };
 
 export default Test;
