@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropzone from "react-dropzone-uploader";
 
 const FileUpload = () => {
-  const getUploadParams = () => {
-    return { url: "http://localhost:5000/file/upload" };
-  };
+  const [data, setData] = useState([]);
 
-  const handleSubmit = (files, allFiles) => {
-    fetch("http://localhost:5000/")
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+  const handleChangeStatus = ({ meta, file }, status) => {};
+
+  const handleSubmit = (allFiles) => {
+    for (const file of allFiles.map((f) => f.file)) {
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        setData((oldData) => [
+          ...oldData,
+          {
+            fileName: file.name,
+            fileSize: file.size,
+            lastModifiedDate: file.lastModifiedDate,
+            fileContent: JSON.parse(e.target.result),
+          },
+        ]);
+      };
+    }
+
     allFiles.forEach((f) => f.remove());
   };
 
   return (
-    <Dropzone
-      getUploadParams={getUploadParams}
-      onSubmit={handleSubmit}
-      styles={{ dropzone: { minHeight: 200, maxHeight: 250 } }}
-    />
+    <>
+      <Dropzone
+        onChangeStatus={handleChangeStatus}
+        onSubmit={handleSubmit}
+        maxFiles={2}
+        inputContent="Drop 2 Files"
+        inputWithFilesContent={(files) => `${2 - files.length} more`}
+        submitButtonDisabled={(files) => files.length < 2}
+        accept=".json"
+      />
+      <button onClick={() => console.log(data)}>CLick</button>
+    </>
   );
 };
 
