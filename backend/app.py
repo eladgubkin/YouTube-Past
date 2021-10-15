@@ -9,11 +9,8 @@ CORS(app)
 
 @app.route('/file/upload', methods=['POST'])
 def handle_file_upload():
-    # file = request.files['file']
-    # session[file.filename] = pd.read_json(file)
-    session['username'] = 'admin'
-    print(session)
-
+    data = request.data
+    print(data)
 
     return "", 201
 
