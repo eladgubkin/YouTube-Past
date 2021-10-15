@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone-uploader";
 
-const FileUpload = () => {
-  const [data, setData] = useState([]);
-
+const FileUpload = ({ data, setData }) => {
   const handleChangeStatus = ({ meta, file }, status) => {};
 
   const handleSubmit = (allFiles) => {
@@ -37,7 +35,6 @@ const FileUpload = () => {
         submitButtonDisabled={(files) => files.length < 2}
         accept=".json"
       />
-      <button onClick={() => console.log(data)}>CLick</button>
     </>
   );
 };
