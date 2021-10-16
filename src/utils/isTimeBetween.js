@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const isTimeBetween = (startTime, endTime, serverTime) => {
+export const isTimeBetween = (startTime, endTime, serverTime) => {
   let start = moment(startTime, "H:mm");
   let end = moment(endTime, "H:mm");
   let server = moment(serverTime, "H:mm");
@@ -12,5 +12,3 @@ const isTimeBetween = (startTime, endTime, serverTime) => {
   }
   return server >= start && server < end;
 };
-
-export default isTimeBetween;
