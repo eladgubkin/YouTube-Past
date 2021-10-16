@@ -341,9 +341,4 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/python,flask,node,react
-watch-history.json
-watch-history-test.json
-search-history.json
-widgets.txt
-היסטוריית חיפושים.json
-היסטוריית צפייה.json
+/data
