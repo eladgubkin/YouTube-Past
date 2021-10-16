@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Dropzone from "react-dropzone";
 import { DataContext } from "../../Contexts/DataContext.js";
-import _ from "lodash";
 import { watchHistoryParse } from "../../utils/watchHistoryParse";
+import _ from "lodash";
 
 export const UploadWatchHistory = () => {
   const { setWatchHistoryData } = useContext(DataContext);
