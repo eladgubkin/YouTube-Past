@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 import { DataContext } from "../Contexts/DataContext";
+import _ from "lodash";
 
 // Components
-import { Dashboard } from "./Dashboard/Dashboard";
+import { Main } from "./Main/Main";
 import { ImportFiles } from "./ImportFiles/ImportFiles";
 
 export const App = () => {
@@ -11,23 +12,27 @@ export const App = () => {
   const [searchHistoryData, setSearchHistoryData] = useState([]);
 
   return (
-    <DataContext.Provider value={{ watchHistoryData, setWatchHistoryData, searchHistoryData, setSearchHistoryData }}>
+    <DataContext.Provider
+      value={{
+        watchHistoryData,
+        setWatchHistoryData,
+        searchHistoryData,
+        setSearchHistoryData,
+      }}
+    >
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/import">Import Files</Link>
-          </Route>
-
-          <Route exact path="/dashboard">
-            <Dashboard />
-            <Link to="/import">Import Files</Link>
-          </Route>
-
-          <Route exact path="/import">
-            <ImportFiles />
-            <Link to="/dashboard">Dashboard</Link>
-          </Route>
+          {_.isEmpty(watchHistoryData) || _.isEmpty(searchHistoryData) ? (
+            <>
+              <Redirect to="/files/import" />
+              <Route exact path="/files/import" component={ImportFiles} />
+            </>
+          ) : (
+            <>
+              <Redirect to="/" />
+              <Route exact path="/" component={Main} />
+            </>
+          )}
         </Switch>
       </BrowserRouter>
     </DataContext.Provider>
