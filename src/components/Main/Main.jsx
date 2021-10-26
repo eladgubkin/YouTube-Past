@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../Contexts/DataContext";
+import { RaceChart } from "./RaceChart";
 
 export const Main = () => {
   const { watchHistoryData, searchHistoryData } = useContext(DataContext);
@@ -13,6 +14,7 @@ export const Main = () => {
       <button onClick={() => console.log(searchHistoryData)}>
         searchHistoryData
       </button>
+      <RaceChart />
     </>
   );
 };
