@@ -16,10 +16,8 @@ export const watchHistoryParse = (fileContent) => {
       header: video.header,
       time: moment(video.time),
       videoTitle: video.title.slice(_.startsWith(video.title, "Watched") ? 8 : 12), // EN / HE
-      videoUrl: video.titleUrl,
-      videoId: video.titleUrl.slice(-11),
       channelTitle: video.subtitles[0].name,
-      channelUrl: video.subtitles[0].url,
+      videoId: video.titleUrl.slice(-11),
       channelId: video.subtitles[0].url.slice(-24),
     };
   });
