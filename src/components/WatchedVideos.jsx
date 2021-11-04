@@ -9,23 +9,9 @@ export const WatchedVideos = () => {
     <>
       <button
         className="bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium m-5"
-        onClick={() => console.log(watchHistoryData)}
+        onClick={() => console.log(watchHistoryData.fileContent)}
       >
         Watch History
-      </button>
-
-      <button
-        className="bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium m-5"
-        onClick={() => console.log(countByVideoId(watchHistoryData.fileContent))}
-      >
-        Count By Video
-      </button>
-
-      <button
-        className="bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium m-5"
-        onClick={() => console.log(countByChannelId(watchHistoryData.fileContent))}
-      >
-        Count By Channel
       </button>
 
       <div className="grid grid-flow-col grid-cols-3 grid-rows-3 gap-4 text-center">
