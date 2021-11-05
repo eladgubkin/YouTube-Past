@@ -1,25 +1,36 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { DataContext } from "../Contexts/DataContext";
+import React from "react";
 
-// Components
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
-import { WatchedVideos } from "../components/WatchedVideos";
-import { Slider } from "../components/Slider";
+// Ui
+import { Navbar } from "../Components/ui/Navbar";
+import { Footer } from "../Components/ui/Footer";
+import { Explanation } from "../Components/ui/Explanation";
+
+// Dropzones
+import { WatchHistoryDropzone } from "../components/files/WatchHistoryDropzone";
+import { SearchHistoryDropzone } from "../components/files/SearchHistoryDropzone";
 
 export const Landing = () => {
-  const { watchHistoryData, searchHistoryData } = useContext(DataContext);
-
   return (
     <>
       <Navbar />
       <main className="md:container md:mx-auto">
-        <WatchedVideos />
-        <Slider />
-      </main>
+        <Explanation />
 
-      {/* <Footer /> */}
+        <h1>Here Import Your Files from Google Takeout</h1>
+        <div className="p-4 w-80">
+          <div className="p-8 bg-white rounded shadow-md">
+            <h2 className="text-2xl font-bold text-gray-800">watch-history.json</h2>
+            <WatchHistoryDropzone />
+          </div>
+        </div>
+        <div className="p-4 w-80">
+          <div className="p-8 bg-white rounded shadow-md">
+            <h2 className="text-2xl font-bold text-gray-800">search-history.json</h2>
+            <SearchHistoryDropzone />
+          </div>
+        </div>
+      </main>
+      <Footer />
     </>
   );
 };
