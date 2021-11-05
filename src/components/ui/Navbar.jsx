@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -63,78 +62,78 @@ export const Navbar = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <Link
-                  to="/#videos"
+                <a
+                  href="/#videos"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   aria-current="page"
                 >
                   Videos
-                </Link>
+                </a>
 
-                <Link
-                  to="/#channels"
+                <a
+                  href="/#channels"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Channels
-                </Link>
+                </a>
 
-                <Link
-                  to="/#map"
+                <a
+                  href="/#map"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Map
-                </Link>
+                </a>
 
-                <Link
-                  to="/#statistics"
+                <a
+                  href="/#statistics"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Statistics
-                </Link>
+                </a>
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <Link
-              to="/import"
+            <a
+              href="/import"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Import
-            </Link>
+            </a>
           </div>
         </div>
       </div>
 
       <div className="sm:hidden" id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link
-            to="/#videos"
+          <a
+            href="/#videos"
             className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             aria-current="page"
           >
             Videos
-          </Link>
+          </a>
 
-          <Link
-            to="/#channels"
+          <a
+            href="/#channels"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Channels
-          </Link>
+          </a>
 
-          <Link
-            to="/#map"
+          <a
+            href="/#map"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Map
-          </Link>
+          </a>
 
-          <Link
-            to="/#statistics"
+          <a
+            href="/#statistics"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Statistics
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
