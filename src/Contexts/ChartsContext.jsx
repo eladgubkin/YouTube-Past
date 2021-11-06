@@ -4,9 +4,9 @@ export const ChartsContext = createContext();
 
 export const ChartsContextProvider = ({ children }) => {
   const [wordCloudData, setWordCloudData] = useState([]);
-  const [weekBarChartData, setWeekBarChartData] = useState([]);
-  const [videoSquareData, setVideoSquareData] = useState([]);
-  const [channelBubbleData, setChannelBubbleData] = useState([]);
+  const [weekBarsData, setWeekBarsData] = useState([]);
+  const [videoBubblesData, setVideoBubblesData] = useState([]);
+  const [channelBubblesData, setChannelBubblesData] = useState([]);
   const [WorldMapData, setWorldMapData] = useState([]);
 
   return (
@@ -14,12 +14,12 @@ export const ChartsContextProvider = ({ children }) => {
       value={{
         wordCloudData,
         setWordCloudData,
-        weekBarChartData,
-        setWeekBarChartData,
-        videoSquareData,
-        setVideoSquareData,
-        channelBubbleData,
-        setChannelBubbleData,
+        weekBarsData,
+        setWeekBarsData,
+        videoBubblesData,
+        setVideoBubblesData,
+        channelBubblesData,
+        setChannelBubblesData,
         WorldMapData,
         setWorldMapData,
       }}
