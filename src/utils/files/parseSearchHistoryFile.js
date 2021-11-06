@@ -10,6 +10,9 @@ export const parseSearchHistoryFile = (file, setSearchHistoryData) => {
     // Remove "details" property (google ads)
     _.remove(data, (query) => (query.details !== undefined ? query : null));
 
+    // Remove searches if header === 'YouTube Music'
+    _.remove(data, (video) => video.header === "YouTube Music");
+
     // Remove ["products", "titleUrl"] property
     data = _.map(data, (query) => _.omit(query, ["products", "titleUrl"]));
 
@@ -17,7 +20,6 @@ export const parseSearchHistoryFile = (file, setSearchHistoryData) => {
     data = _.map(data, (query) => {
       return {
         time: moment(query.time),
-        header: query.header,
         words: query.title
           .slice(_.startsWith(query.title, "Searched for") ? 13 : 6) // EN / HE
           .replace(/[^a-zA-Z ]/g, "") // Remove all special chars
