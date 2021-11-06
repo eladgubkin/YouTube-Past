@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { FilesContext } from "./Contexts/FilesContext";
-import { FilesContextProvider } from "./Contexts/FilesContext";
+import React from "react";
+import { FilesContext, FilesContextProvider } from "./contexts/FilesContext";
 import { LandingScreen } from "./views/LandingScreen";
 import { AppScreen } from "./views/AppScreen";
 
