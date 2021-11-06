@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export const parseWeekBarChartData = (watchHistoryData) => {
+export const parseWeekBarsData = (watchHistoryData) => {
   const data = _.map(
     _.countBy(
       watchHistoryData.map((video) => ({
