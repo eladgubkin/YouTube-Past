@@ -1,12 +1,12 @@
 import React from "react";
 import { Navbar } from "../Components/ui/Navbar";
-import { ChartsContextProvider } from "../Contexts/ChartsContext";
+import { ChartsContextProvider } from "../contexts/ChartsContext";
 
 // Charts
 import { WordCloud } from "../components/charts/WordCloud";
-import { WeekBarChart } from "../components/charts/WeekBarChart";
-import { VideoSquare } from "../components/charts/VideoSquare";
-import { ChannelBubble } from "../components/charts/ChannelBubble";
+import { WeekBars } from "../components/charts/WeekBars";
+import { VideoBubbles } from "../components/charts/VideoBubbles";
+import { ChannelBubbles } from "../components/charts/ChannelBubbles";
 import { WorldMap } from "../components/charts/WorldMap";
 
 export const AppScreen = () => {
@@ -15,9 +15,9 @@ export const AppScreen = () => {
       <Navbar />
       <ChartsContextProvider>
         <WordCloud />
-        <WeekBarChart />
-        <VideoSquare />
-        <ChannelBubble />
+        <WeekBars />
+        <VideoBubbles />
+        <ChannelBubbles />
         <WorldMap />
       </ChartsContextProvider>
     </>
