@@ -7,8 +7,9 @@ import { WordCloud } from "../components/charts/WordCloud";
 import { WeekBarChart } from "../components/charts/WeekBarChart";
 import { VideoSquare } from "../components/charts/VideoSquare";
 import { ChannelBubble } from "../components/charts/ChannelBubble";
+import { WorldMap } from "../components/charts/WorldMap";
 
-export const MainApp = () => {
+export const AppScreen = () => {
   return (
     <>
       <Navbar />
@@ -17,6 +18,7 @@ export const MainApp = () => {
         <WeekBarChart />
         <VideoSquare />
         <ChannelBubble />
+        <WorldMap />
       </ChartsContextProvider>
     </>
   );
