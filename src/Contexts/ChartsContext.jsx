@@ -5,8 +5,9 @@ export const ChartsContext = createContext();
 export const ChartsContextProvider = ({ children }) => {
   const [wordCloudData, setWordCloudData] = useState([]);
   const [weekBarChartData, setWeekBarChartData] = useState([]);
-  const [channelBubbleData, setChannelBubbleData] = useState([]);
   const [videoSquareData, setVideoSquareData] = useState([]);
+  const [channelBubbleData, setChannelBubbleData] = useState([]);
+  const [WorldMapData, setWorldMapData] = useState([]);
 
   return (
     <ChartsContext.Provider
@@ -15,10 +16,12 @@ export const ChartsContextProvider = ({ children }) => {
         setWordCloudData,
         weekBarChartData,
         setWeekBarChartData,
-        channelBubbleData,
-        setChannelBubbleData,
         videoSquareData,
         setVideoSquareData,
+        channelBubbleData,
+        setChannelBubbleData,
+        WorldMapData,
+        setWorldMapData,
       }}
     >
       {children}
