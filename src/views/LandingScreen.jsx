@@ -1,42 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FilesContext } from "../contexts/FilesContext";
+
+import { parseWatchHistoryFile } from "../utils/files/parseWatchHistoryFile";
+import { parseSearchHistoryFile } from "../utils/files/parseSearchHistoryFile";
+import { parseLocationHistoryFile } from "../utils/files/parseLocationHistoryFile";
 
 // Ui
 import { Navbar } from "../Components/ui/Navbar";
 import { Footer } from "../Components/ui/Footer";
 import { Explanation } from "../Components/ui/Explanation";
+import { Card } from "../components/ui/Card";
 
 // Dropzones
-import { WatchHistoryDropzone } from "../components/files/WatchHistoryDropzone";
-import { SearchHistoryDropzone } from "../components/files/SearchHistoryDropzone";
-import { LocationHistoryDropzone } from "../components/files/LocationHistoryDropzone";
 
 export const LandingScreen = () => {
+  const { setWatchHistoryData, setSearchHistoryData, setLocationHistoryData } =
+    useContext(FilesContext);
   return (
     <>
       <Navbar />
       <main className="md:container md:mx-auto">
-        <Explanation />
-
-        <div className="p-4 w-80">
-          <div className="p-8 bg-white rounded shadow-md">
-            <h2 className="text-2xl font-bold text-gray-800">watch-history.json</h2>
-            <WatchHistoryDropzone />
-          </div>
-        </div>
-        <div className="p-4 w-80">
-          <div className="p-8 bg-white rounded shadow-md">
-            <h2 className="text-2xl font-bold text-gray-800">search-history.json</h2>
-            <SearchHistoryDropzone />
-          </div>
-        </div>
-        <div className="p-4 w-80">
-          <div className="p-8 bg-white rounded shadow-md">
-            <h2 className="text-2xl font-bold text-gray-800">
-              location-history.json
-            </h2>
-            <LocationHistoryDropzone />
-          </div>
-        </div>
+        {/* <Explanation /> */}
+        <section className="flex ">
+          <Card
+            cardHeader="watch-history.json"
+            cardTitle="Watch History"
+            setState={setWatchHistoryData}
+            parser={parseWatchHistoryFile}
+          />
+          <Card
+            cardHeader="search-history.json"
+            cardTitle="Search History"
+            setState={setSearchHistoryData}
+            parser={parseSearchHistoryFile}
+          />
+          <Card
+            cardHeader="location-history.json"
+            cardTitle="Location History"
+            setState={setLocationHistoryData}
+            parser={parseLocationHistoryFile}
+          />
+        </section>
       </main>
       <Footer />
     </>
