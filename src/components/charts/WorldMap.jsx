@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { ChartsContext } from "../../Contexts/ChartsContext";
-import { FilesContext } from "../../Contexts/FilesContext";
-import { parseWorldMapData } from "../../utils/charts/parseWorldMapData";
+import { ChartsContext } from "../../contexts/ChartsContext";
+import { FilesContext } from "../../contexts/FilesContext";
+import { parseWorldMapData } from "../../utils/charts/worldMap/parseWorldMapData";
 
 export const WorldMap = () => {
   const { WorldMapData, setWorldMapData } = useContext(ChartsContext);
