@@ -26,6 +26,7 @@ export const ChannelBubbles = () => {
 
   // Run once received data
   useEffect(() => {
+    // Simulation
     const simulation = forceSimulation()
       .force("x", forceX().strength(0.05))
       .force("y", forceY().strength(0.05))
@@ -34,14 +35,38 @@ export const ChannelBubbles = () => {
         forceCollide((d) => radiusScale(d.count) + 1)
       );
 
+    // Svg
     const svg = select(svgRef.current)
       .attr("width", width)
       .attr("height", height)
       .append("g")
       .attr("transform", `translate(${width / 2},${height / 2})`);
 
+    // Defs
+    const defs = svg
+      .append("defs")
+      .selectAll(".channel-image")
+      .data(channelBubblesData)
+      .enter()
+      .append("pattern")
+      .attr("class", "channel-image")
+      .attr("id", (d) => d.channelId)
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("patternContentUnits", "objectBoundingBox")
+      .append("image")
+      .attr("width", 1)
+      .attr("height", 1)
+      .attr("preserveAspectRatio", "none")
+      .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
+      .attr("xlink:href", (d) => {
+        return d.count;
+      });
+
+    // Radius
     const radiusScale = scaleSqrt().domain([1, 1000]).range([5, 50]);
 
+    // Circles
     const circles = svg
       .selectAll(".channel")
       .data(channelBubblesData)
@@ -49,13 +74,10 @@ export const ChannelBubbles = () => {
       .append("circle")
       .attr("class", "channel")
       .attr("r", (d) => radiusScale(d.count))
-      .attr("fill", "lime")
-      .on("click", (d) => console.log(d.target));
+      .attr("fill", (d) => `salmon`)
+      .on("click", (d) => console.log(d));
 
-    const ticked = () => {
-      circles.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
-    };
-
+    const ticked = () => circles.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
     simulation.nodes(channelBubblesData).on("tick", ticked);
 
     // Cleanup
