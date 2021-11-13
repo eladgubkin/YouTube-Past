@@ -35,7 +35,7 @@ export const parseChannelBubblesData = (watchHistoryData) => {
         items.map(({ id, snippet }) => {
           const { title, thumbnails } = snippet;
 
-          data.map((dta) => {
+          return data.map((dta) => {
             if (dta.channelId === id) {
               dta.title = title;
               dta.thumbnail = thumbnails.default.url;
