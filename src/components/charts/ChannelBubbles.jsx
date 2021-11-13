@@ -35,6 +35,9 @@ export const ChannelBubbles = () => {
         forceCollide((d) => radiusScale(d.count) + 1)
       );
 
+    // Radius
+    const radiusScale = scaleSqrt().domain([1, 1000]).range([5, 50]);
+
     // Svg
     const svg = select(svgRef.current)
       .attr("width", width)
@@ -60,11 +63,9 @@ export const ChannelBubbles = () => {
       .attr("preserveAspectRatio", "none")
       .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
       .attr("xlink:href", (d) => {
-        return d.count;
+        console.log(d);
+        return `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`;
       });
-
-    // Radius
-    const radiusScale = scaleSqrt().domain([1, 1000]).range([5, 50]);
 
     // Circles
     const circles = svg
@@ -74,7 +75,7 @@ export const ChannelBubbles = () => {
       .append("circle")
       .attr("class", "channel")
       .attr("r", (d) => radiusScale(d.count))
-      .attr("fill", (d) => `salmon`)
+      .attr("fill", (d) => `url(#${d.channelId})`)
       .on("click", (d) => console.log(d));
 
     const ticked = () => circles.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
