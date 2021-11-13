@@ -19,9 +19,13 @@ export const ChannelBubbles = () => {
   const { watchHistoryData } = useContext(FilesContext);
   const svgRef = useRef();
 
+  // Run on mount
   useEffect(() => {
     setChannelBubblesData(parseChannelBubblesData(watchHistoryData));
+  }, []);
 
+  // Run once received data
+  useEffect(() => {
     const simulation = forceSimulation()
       .force("x", forceX().strength(0.05))
       .force("y", forceY().strength(0.05))
@@ -53,7 +57,12 @@ export const ChannelBubbles = () => {
     };
 
     simulation.nodes(channelBubblesData).on("tick", ticked);
-  }, []);
+
+    // Cleanup
+    return () => {
+      svg.selectAll("*").remove();
+    };
+  });
 
   return (
     <>
@@ -63,7 +72,12 @@ export const ChannelBubbles = () => {
       >
         ChannelBubbles
       </button>
-      <svg ref={svgRef} />
+
+      {channelBubblesData.length === 0 ? (
+        console.log("loading...")
+      ) : (
+        <svg ref={svgRef} />
+      )}
     </>
   );
 };
