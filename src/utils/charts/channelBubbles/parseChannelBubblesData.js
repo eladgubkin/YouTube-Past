@@ -17,7 +17,7 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     })
   );
 
-  data = _.sortBy(data, (e) => e.count).slice(-150);
+  data = _.sortBy(data, (e) => e.count).slice(-15);
   const newData = [];
 
   _.chunk(data, 50).map((dta) => {
