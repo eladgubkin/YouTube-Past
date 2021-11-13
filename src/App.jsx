@@ -8,9 +8,7 @@ export const App = () => {
     <FilesContextProvider>
       <FilesContext.Consumer>
         {(ctx) =>
-          !ctx.watchHistoryData?.length ||
-          !ctx.searchHistoryData?.length ||
-          !ctx.locationHistoryData?.length ? (
+          !ctx.watchHistoryData?.length || !ctx.searchHistoryData?.length ? (
             <LandingScreen />
           ) : (
             <AppScreen />
