@@ -17,7 +17,8 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     })
   );
 
-  data = _.sortBy(data, (e) => e.count).slice(-100);
+  data = _.sortBy(data, (e) => e.count).slice(-150);
+  const newData = [];
 
   _.chunk(data, 50).map((dta) => {
     const channelIds = JSON.stringify(dta.map((dta) => dta.channelId))
@@ -30,22 +31,15 @@ export const parseChannelBubblesData = (watchHistoryData) => {
 
     fetch(URL)
       .then((res) => res.json())
-      .then((res) => {
-        res.items.map((channel) => {
-          const { title, customUrl, thumbnails, publishedAt } = channel.snippet;
-          const { subscriberCount, videoCount, viewCount } = channel.statistics;
-          const { topicCategories } = channel.topicDetails;
+      .then(({ items }) => {
+        items.map(({ id, snippet }) => {
+          const { title, thumbnails } = snippet;
 
-          data.push({
-            channelId: channel.id,
-            title,
-            thumbnail: thumbnails.default.url,
-            // customUrl,
-            // publishedAt: moment(publishedAt),
-            // subscriberCount: _.toNumber(subscriberCount),
-            // videoCount: _.toNumber(videoCount),
-            // viewCount: _.toNumber(viewCount),
-            // categories: topicCategories.map((category) => category.slice(30)),
+          data.map((dta) => {
+            if (dta.channelId === id) {
+              dta.title = title;
+              dta.thumbnail = thumbnails.default.url;
+            }
           });
         });
       });
