@@ -15,17 +15,15 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 export const ChannelBubbles = () => {
-  const { channelBubblesData, setChannelBubblesData } = useContext(ChartsContext);
+  const { channelBubblesData, setChannelBubblesData } =
+    useContext(ChartsContext);
   const { watchHistoryData } = useContext(FilesContext);
   const svgRef = useRef();
 
   // Run on mount
   useEffect(() => {
     setChannelBubblesData(parseChannelBubblesData(watchHistoryData));
-  }, []);
 
-  // Run once received data
-  useEffect(() => {
     // Simulation
     const simulation = forceSimulation()
       .force("x", forceX().strength(0.05))
@@ -36,7 +34,7 @@ export const ChannelBubbles = () => {
       );
 
     // Radius
-    const radiusScale = scaleSqrt().domain([1, 1000]).range([5, 50]);
+    const radiusScale = scaleSqrt().domain([1, 1000]).range([10, 60]);
 
     // Svg
     const svg = select(svgRef.current)
@@ -62,10 +60,7 @@ export const ChannelBubbles = () => {
       .attr("height", 1)
       .attr("preserveAspectRatio", "none")
       .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-      .attr("xlink:href", (d) => {
-        console.log(d);
-        return `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`;
-      });
+      .attr("xlink:href", (d) => d.thumbnail);
 
     // Circles
     const circles = svg
@@ -76,31 +71,11 @@ export const ChannelBubbles = () => {
       .attr("class", "channel")
       .attr("r", (d) => radiusScale(d.count))
       .attr("fill", (d) => `url(#${d.channelId})`)
-      .on("click", (d) => console.log(d));
+      .on("click", (d) => console.log(d.target.__data__.title));
 
     const ticked = () => circles.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
     simulation.nodes(channelBubblesData).on("tick", ticked);
+  }, []);
 
-    // Cleanup
-    return () => {
-      svg.selectAll("*").remove();
-    };
-  });
-
-  return (
-    <>
-      <button
-        className="bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium m-5"
-        onClick={() => console.log(channelBubblesData)}
-      >
-        ChannelBubbles
-      </button>
-
-      {channelBubblesData.length === 0 ? (
-        console.log("loading...")
-      ) : (
-        <svg ref={svgRef} />
-      )}
-    </>
-  );
+  return <svg ref={svgRef} />;
 };
