@@ -1,5 +1,4 @@
 import _ from "lodash";
-import moment from "moment";
 
 export const parseChannelBubblesData = (watchHistoryData) => {
   let data = [];
@@ -17,8 +16,7 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     })
   );
 
-  data = _.sortBy(data, (e) => e.count).slice(-15);
-  const newData = [];
+  data = _.sortBy(data, (e) => e.count).slice(-50);
 
   _.chunk(data, 50).map((dta) => {
     const channelIds = JSON.stringify(dta.map((dta) => dta.channelId))
@@ -35,7 +33,7 @@ export const parseChannelBubblesData = (watchHistoryData) => {
         items.map(({ id, snippet }) => {
           const { title, thumbnails } = snippet;
 
-          return data.map((dta) => {
+          data.map((dta) => {
             if (dta.channelId === id) {
               dta.title = title;
               dta.thumbnail = thumbnails.default.url;
