@@ -1,29 +1,16 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { ChartsContext } from "../../contexts/ChartsContext";
-import { FilesContext } from "../../contexts/FilesContext";
-import { parseChannelBubblesData } from "../../utils/charts/channelBubbles/parseChannelBubblesData";
-import {
-  select,
-  forceSimulation,
-  forceX,
-  forceY,
-  forceCollide,
-  scaleSqrt,
-} from "d3";
+import { select, forceSimulation, forceX, forceY, forceCollide, scaleSqrt } from "d3";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
 
 export const ChannelBubbles = () => {
-  const { channelBubblesData, setChannelBubblesData } =
-    useContext(ChartsContext);
-  const { watchHistoryData } = useContext(FilesContext);
+  const { channelBubblesData } = useContext(ChartsContext);
   const svgRef = useRef();
 
   // Run on mount
   useEffect(() => {
-    setChannelBubblesData(parseChannelBubblesData(watchHistoryData));
-
     // Simulation
     const simulation = forceSimulation()
       .force("x", forceX().strength(0.05))
@@ -44,8 +31,9 @@ export const ChannelBubbles = () => {
       .attr("transform", `translate(${width / 2},${height / 2})`);
 
     // Defs
-    const defs = svg
-      .append("defs")
+    const defs = svg.append("defs");
+
+    defs
       .selectAll(".channel-image")
       .data(channelBubblesData)
       .enter()
@@ -59,8 +47,10 @@ export const ChannelBubbles = () => {
       .attr("width", 1)
       .attr("height", 1)
       .attr("preserveAspectRatio", "none")
-      .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-      .attr("xlink:href", (d) => d.thumbnail);
+      .attr("xlink:href", (d) => {
+        console.log(d);
+        return "https://yt3.ggpht.com/ytc/AKedOLS0jDvPKbVd8n0k9Kl76VTR5lUS4g-fAWyMuQgE_w=s176-c-k-c0x00ffffff-no-rj";
+      });
 
     // Circles
     const circles = svg
@@ -77,5 +67,16 @@ export const ChannelBubbles = () => {
     simulation.nodes(channelBubblesData).on("tick", ticked);
   }, []);
 
-  return <svg ref={svgRef} />;
+  return (
+    <>
+      <button
+        className="bg-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium m-5"
+        onClick={() => console.log(channelBubblesData)}
+      >
+        ChannelBubble
+      </button>
+
+      <svg ref={svgRef} />
+    </>
+  );
 };
