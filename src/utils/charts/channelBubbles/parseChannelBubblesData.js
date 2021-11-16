@@ -16,7 +16,7 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     })
   );
 
-  data = _.sortBy(data, (e) => e.count).slice(-50);
+  data = _.sortBy(data, (e) => e.count).slice(-10);
 
   _.chunk(data, 50).map((dta) => {
     const channelIds = JSON.stringify(dta.map((dta) => dta.channelId))
