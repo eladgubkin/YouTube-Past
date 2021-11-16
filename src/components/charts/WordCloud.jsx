@@ -1,15 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { ChartsContext } from "../../contexts/ChartsContext";
-import { FilesContext } from "../../contexts/FilesContext";
-import { parseWordCloudData } from "../../utils/charts/wordCloud/parseWordCloudData";
 
 export const WordCloud = () => {
-  const { wordCloudData, setWordCloudData } = useContext(ChartsContext);
-  const { searchHistoryData } = useContext(FilesContext);
-
-  useEffect(() => {
-    setWordCloudData(parseWordCloudData(searchHistoryData));
-  }, []);
+  const { wordCloudData } = useContext(ChartsContext);
 
   return (
     <>

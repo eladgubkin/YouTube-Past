@@ -1,15 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { ChartsContext } from "../../contexts/ChartsContext";
-import { FilesContext } from "../../contexts/FilesContext";
-import { parseVideoBubblesData } from "../../utils/charts/videoBubbles/parseVideoBubblesData";
 
 export const VideoBubbles = () => {
-  const { videoBubblesData, setVideoBubblesData } = useContext(ChartsContext);
-  const { watchHistoryData } = useContext(FilesContext);
-
-  useEffect(() => {
-    setVideoBubblesData(parseVideoBubblesData(watchHistoryData));
-  }, []);
+  const { videoBubblesData } = useContext(ChartsContext);
 
   return (
     <>
