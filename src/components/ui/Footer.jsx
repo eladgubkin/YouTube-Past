@@ -1,4 +1,5 @@
 import React from "react";
+import { ApexChart } from "../apextest";
 
 export const Footer = () => {
   return (
@@ -10,6 +11,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      <ApexChart />
     </footer>
   );
 };
