@@ -12,11 +12,11 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     ),
     (val, channelId) => ({
       channelId: channelId,
-      count: val,
+      selfViewCount: val,
     })
   );
 
-  data = _.sortBy(data, (e) => e.count).slice(-10);
+  data = _.sortBy(data, (e) => e.selfViewCount).slice(-10);
 
   _.chunk(data, 50).map((dta) => {
     const channelIds = JSON.stringify(dta.map((dta) => dta.channelId))
@@ -30,13 +30,14 @@ export const parseChannelBubblesData = (watchHistoryData) => {
     fetch(URL)
       .then((res) => res.json())
       .then(({ items }) => {
-        items.map(({ id, snippet }) => {
+        items.map(({ id, snippet, statistics }) => {
           const { title, thumbnails } = snippet;
 
           data.map((dta) => {
             if (dta.channelId === id) {
               dta.title = title;
               dta.thumbnail = thumbnails.default.url;
+              dta.viewCount = statistics.viewCount;
             }
           });
         });
