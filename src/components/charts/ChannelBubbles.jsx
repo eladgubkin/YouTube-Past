@@ -1,6 +1,13 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { ChartsContext } from "../../contexts/ChartsContext";
-import { select, forceSimulation, forceX, forceY, forceCollide, scaleSqrt } from "d3";
+import {
+  select,
+  forceSimulation,
+  forceX,
+  forceY,
+  forceCollide,
+  scaleSqrt,
+} from "d3";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -17,7 +24,7 @@ export const ChannelBubbles = () => {
       .force("y", forceY().strength(0.05))
       .force(
         "collide",
-        forceCollide((d) => radiusScale(d.count) + 1)
+        forceCollide((d) => radiusScale(d.selfViewCount) + 1)
       );
 
     // Radius
@@ -59,7 +66,7 @@ export const ChannelBubbles = () => {
       .enter()
       .append("circle")
       .attr("class", "channel")
-      .attr("r", (d) => radiusScale(d.count))
+      .attr("r", (d) => radiusScale(d.selfViewCount))
       .attr("fill", (d) => `url(#${d.channelId})`)
       .on("click", (d) => console.log(d.target.__data__.title));
 
