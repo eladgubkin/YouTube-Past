@@ -1,10 +1,6 @@
 import _ from "lodash";
 
-export const parseWeekBarsData = (
-  watchHistoryData,
-  filterByYear = undefined,
-  filterByMonth = undefined
-) => {
+export const parseWeekBarsData = (watchHistoryData, filterByYear = 2020, filterByMonth = 7) => {
   let data = [];
 
   data = watchHistoryData.map((video) => ({
@@ -20,7 +16,7 @@ export const parseWeekBarsData = (
   // Count
   data = _.map(_.countBy(data, "day"), (count, day) => ({
     day,
-    count,
+    count: count / 4,
   }));
 
   return data;
