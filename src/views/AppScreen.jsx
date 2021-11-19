@@ -14,11 +14,11 @@ export const AppScreen = () => {
     <>
       <Navbar />
       <ChartsContextProvider>
-        <WordCloud />
+        {/* <WordCloud /> */}
         <WeekBars />
-        <VideoBubbles />
+        {/* <VideoBubbles />
         <ChannelBubbles />
-        <WorldMap />
+        <WorldMap /> */}
       </ChartsContextProvider>
     </>
   );
