@@ -3,7 +3,7 @@ import { FilesContext } from "./FilesContext";
 
 // DATA PARSING:
 import { parseWordCloudData } from "../utils/charts/wordCloud/parseWordCloudData";
-import { parseWeekBarsData } from "../utils/charts/weekBars/parseWeekBarsData";
+import { parseDayBarsData } from "../utils/charts/dayBars/parseDayBarsData";
 import { parseVideoBubblesData } from "../utils/charts/videoBubbles/parseVideoBubblesData";
 import { parseChannelBubblesData } from "../utils/charts/channelBubbles/parseChannelBubblesData";
 import { parseWorldMapData } from "../utils/charts/worldMap/parseWorldMapData";
@@ -13,7 +13,7 @@ export const ChartsContextProvider = ({ children }) => {
   const { watchHistoryData, searchHistoryData, locationHistoryData } = useContext(FilesContext);
 
   const [wordCloudData] = useState(parseWordCloudData(searchHistoryData));
-  const [weekBarsData] = useState(parseWeekBarsData(watchHistoryData));
+  const [dayBarsData] = useState(parseDayBarsData(watchHistoryData));
   const [videoBubblesData] = useState(parseVideoBubblesData(watchHistoryData));
   const [channelBubblesData] = useState(parseChannelBubblesData(watchHistoryData));
   const [WorldMapData] = useState(parseWorldMapData(watchHistoryData, locationHistoryData));
@@ -22,7 +22,7 @@ export const ChartsContextProvider = ({ children }) => {
     <ChartsContext.Provider
       value={{
         wordCloudData,
-        weekBarsData,
+        dayBarsData,
         videoBubblesData,
         channelBubblesData,
         WorldMapData,

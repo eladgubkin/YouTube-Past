@@ -4,7 +4,7 @@ import { ChartsContextProvider } from "../contexts/ChartsContext";
 
 // Charts
 import { WordCloud } from "../components/charts/WordCloud";
-import { WeekBars } from "../components/charts/WeekBars";
+import { DayBars } from "../components/charts/DayBars";
 import { VideoBubbles } from "../components/charts/VideoBubbles";
 import { ChannelBubbles } from "../components/charts/ChannelBubbles";
 import { WorldMap } from "../components/charts/WorldMap";
@@ -15,7 +15,7 @@ export const AppScreen = () => {
       <Navbar />
       <ChartsContextProvider>
         {/* <WordCloud /> */}
-        <WeekBars />
+        <DayBars />
         {/* <VideoBubbles />
         <ChannelBubbles />
         <WorldMap /> */}
