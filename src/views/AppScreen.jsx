@@ -8,17 +8,14 @@ import { DayBars } from "../components/charts/DayBars";
 import { VideoBubbles } from "../components/charts/VideoBubbles";
 import { ChannelBubbles } from "../components/charts/ChannelBubbles";
 import { WorldMap } from "../components/charts/WorldMap";
+import AvgVidsPerDayBars from "../components/charts/new/AvgVidsPerDayBars";
 
 export const AppScreen = () => {
   return (
     <>
       <Navbar />
       <ChartsContextProvider>
-        {/* <WordCloud /> */}
-        <DayBars />
-        {/* <VideoBubbles />
-        <ChannelBubbles />
-        <WorldMap /> */}
+        <AvgVidsPerDayBars />
       </ChartsContextProvider>
     </>
   );
