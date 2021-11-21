@@ -27,9 +27,7 @@ export const parseWatchHistoryFile = (file, setWatchHistoryData) => {
     });
 
     // Remove ["subtitles", "products", "header"] property from each video
-    data = _.map(data, (video) =>
-      _.omit(video, ["subtitles", "products", "header"])
-    );
+    data = _.map(data, (video) => _.omit(video, ["subtitles", "products", "header"]));
 
     // setState
     setWatchHistoryData(data);
