@@ -6,49 +6,56 @@ export const parseDayBarsData = (watchHistoryData) => {
   data = watchHistoryData.map((video) => ({
     year: video.time.year(),
     month: video.time.month(),
-    day: video.time.day(),
     date: video.time.date(),
+    day: video.time.day(),
     videoId: video.videoId,
   }));
 
-  let dataByYear = {};
-  let dataByMonth = {};
-  let dataByDates = {};
+  const dataFilteredByYear = {};
+  const dataFilteredByMonth = {};
+  const dataFilteredByDate = {};
+  const dataFilteredByDay = {};
 
   const years = _.uniqBy(_.map(data, (dta) => dta.year));
   const months = _.uniqBy(_.map(data, (dta) => dta.month));
-  const days = _.uniqBy(_.map(data, (dta) => dta.day));
   const dates = _.uniqBy(_.map(data, (dta) => dta.date));
+  const days = _.uniqBy(_.map(data, (dta) => dta.day));
 
-  // Filter by years
+  // Filter by years.
   _.forEach(years, (year) => {
-    dataByYear[year] = _.filter(data, (o) => o.year === year);
+    dataFilteredByYear[year] = _.filter(data, (o) => o.year === year);
   });
 
-  // Filter by months
-  _.mapValues(dataByYear, (dta, year) => {
+  // Filter by months and years.
+  _.mapValues(dataFilteredByYear, (dta, year) => {
     months.map((month) => {
-      dataByMonth[year] = {
-        ...dataByMonth[year],
+      dataFilteredByMonth[year] = {
+        ...dataFilteredByMonth[year],
         [month]: _.filter(dta, (o) => o.month === month),
       };
     });
   });
 
-  // Filter by dates
-  // _.mapValues(dataByMonth, (dta, year) => {
-  //   _.mapValues(dta, (d, month) => {
-  //     dates.map((date) => {
-  //       dataByDates[year] = {
-  //         ...dataByDates[year],
-  //         [month]: {
-  //           ...dataByDates[year[month]],
-  //           [date]: _.filter(d, (o) => o.date === date),
-  //         },
-  //       };
-  //     });
-  //   });
-  // });
+  // Filter by dates, months and years.
+  _.mapValues(dataFilteredByMonth, (dta, year) => {
+    dataFilteredByDate[year] = _.mapValues(dta, (d) => {
+      const month = {};
+      dates.forEach((date) => {
+        month[date] = _.filter(d, (o) => o.date === date);
+      });
+      return month;
+    });
+  });
 
-  return dataByMonth;
+  // Filter by day of week in a year.
+  _.mapValues(dataFilteredByYear, (dta, year) => {
+    days.map((day) => {
+      dataFilteredByDay[year] = {
+        ...dataFilteredByDay[year],
+        [day]: _.filter(dta, (o) => o.day === day),
+      };
+    });
+  });
+
+  return dataFilteredByDay;
 };
