@@ -57,5 +57,5 @@ export const parseDayBarsData = (watchHistoryData) => {
     });
   });
 
-  return dataFilteredByDay;
+  return dataFilteredByMonth;
 };
