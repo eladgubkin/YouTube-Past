@@ -3,7 +3,7 @@ import { ChartsContext } from "../../../contexts/ChartsContext";
 import { FilesContext } from "../../../contexts/FilesContext";
 import { parseDayBarsData } from "../../../utils/charts/dayBars/parseDayBarsData";
 
-const AvgVidsPerDayBars = () => {
+export const AvgVidsPerDayBars = () => {
   const { dayBarsData, setDayBarsData } = useContext(ChartsContext);
   const { watchHistoryData } = useContext(FilesContext);
 
@@ -22,5 +22,3 @@ const AvgVidsPerDayBars = () => {
     </div>
   );
 };
-
-export default AvgVidsPerDayBars;
