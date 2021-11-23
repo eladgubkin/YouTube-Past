@@ -19,7 +19,6 @@ export const parseWatchHistoryFile = (file, setWatchHistoryData) => {
     // Data formatting
     data = _.map(data, (video) => {
       return {
-        header: video.header,
         time: moment(video.time),
         videoId: video.titleUrl.slice(-11),
         channelId: video.subtitles[0].url.slice(-24),
