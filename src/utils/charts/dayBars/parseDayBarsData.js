@@ -1,29 +1,21 @@
 import _ from "lodash";
 
 export const parseDayBarsData = (watchHistoryData) => {
-  let data = [];
-
-  data = watchHistoryData.map((video) => ({
-    year: video.time.year(),
-    month: video.time.month(),
-    date: video.time.date(),
-    day: video.time.day(),
-    videoId: video.videoId,
-  }));
+  let data = watchHistoryData;
 
   const dataFilteredByYear = {};
   const dataFilteredByMonth = {};
   const dataFilteredByDate = {};
   const dataFilteredByDay = {};
 
-  const years = _.uniqBy(_.map(data, (dta) => dta.year));
-  const months = _.uniqBy(_.map(data, (dta) => dta.month));
-  const dates = _.uniqBy(_.map(data, (dta) => dta.date));
-  const days = _.uniqBy(_.map(data, (dta) => dta.day));
+  const years = _.uniqBy(_.map(data, (video) => video.time.year()));
+  const months = _.uniqBy(_.map(data, (video) => video.time.month()));
+  const dates = _.uniqBy(_.map(data, (video) => video.time.date()));
+  const days = _.uniqBy(_.map(data, (video) => video.time.day()));
 
   // Filter by years.
   _.forEach(years, (year) => {
-    dataFilteredByYear[year] = _.filter(data, (o) => o.year === year);
+    dataFilteredByYear[year] = _.filter(data, (video) => video.time.year() === year);
   });
 
   // Filter by months and years.
@@ -31,7 +23,7 @@ export const parseDayBarsData = (watchHistoryData) => {
     months.map((month) => {
       dataFilteredByMonth[year] = {
         ...dataFilteredByMonth[year],
-        [month]: _.filter(dta, (o) => o.month === month),
+        [month]: _.filter(dta, (video) => video.time.month() === month),
       };
     });
   });
@@ -41,7 +33,7 @@ export const parseDayBarsData = (watchHistoryData) => {
     dataFilteredByDate[year] = _.mapValues(dta, (d) => {
       const month = {};
       dates.forEach((date) => {
-        month[date] = _.filter(d, (o) => o.date === date);
+        month[date] = _.filter(d, (video) => video.time.date() === date);
       });
       return month;
     });
@@ -52,10 +44,10 @@ export const parseDayBarsData = (watchHistoryData) => {
     days.map((day) => {
       dataFilteredByDay[year] = {
         ...dataFilteredByDay[year],
-        [day]: _.filter(dta, (o) => o.day === day),
+        [day]: _.filter(dta, (video) => video.time.day() === day),
       };
     });
   });
 
-  return dataFilteredByMonth;
+  return dataFilteredByDay;
 };
