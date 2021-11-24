@@ -17,7 +17,7 @@ export const VidsPerDayHeatmap = () => {
     },
     tooltip: {
       position: "top",
-      formatter: function (p) {
+      formatter: (p) => {
         return "Lol";
       },
     },
@@ -46,5 +46,6 @@ export const VidsPerDayHeatmap = () => {
       data: data,
     },
   });
+
   return <EChartsReact option={option} />;
 };
