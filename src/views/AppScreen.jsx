@@ -17,7 +17,6 @@ export const AppScreen = () => {
       <Navbar />
       <ChartsContextProvider>
         <VidsPerDayHeatmap />
-        <AvgVidsPerDayBars />
       </ChartsContextProvider>
     </>
   );
