@@ -13,7 +13,7 @@ export const ChartsContextProvider = ({ children }) => {
   const { watchHistoryData, searchHistoryData, locationHistoryData } = useContext(FilesContext);
 
   const [wordCloudData] = useState(parseWordCloudData(searchHistoryData));
-  const [dayBarsData, setDayBarsData] = useState([]);
+  const [vidsPerDayHeatmapData, setVidsPerDayHeatmapData] = useState([]);
   const [videoBubblesData] = useState(parseVideoBubblesData(watchHistoryData));
   const [channelBubblesData] = useState(parseChannelBubblesData(watchHistoryData));
   const [WorldMapData] = useState(parseWorldMapData(watchHistoryData, locationHistoryData));
@@ -22,8 +22,8 @@ export const ChartsContextProvider = ({ children }) => {
     <ChartsContext.Provider
       value={{
         wordCloudData,
-        dayBarsData,
-        setDayBarsData,
+        vidsPerDayHeatmapData,
+        setVidsPerDayHeatmapData,
         videoBubblesData,
         channelBubblesData,
         WorldMapData,
