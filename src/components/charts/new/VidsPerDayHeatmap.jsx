@@ -12,34 +12,52 @@ export const VidsPerDayHeatmap = () => {
     setVidsPerDayHeatmapData(parseVidsPerDayHeatmap(watchHistoryData));
   }, []);
 
+  const [year, setYear] = useState("2020");
+
   const [option, setOption] = useState({
-    tooltip: {
-      position: "top",
-      formatter: (p) => `${p.data[1]} on ${p.data[0]}`,
+    title: {
+      top: 30,
+      left: "center",
+      text: "Daily Step Count",
     },
+    tooltip: {},
     visualMap: {
       min: 0,
       max: 100,
-      calculable: true,
-      orient: "vertical",
-      top: "center",
+      type: "piecewise",
+      orient: "horizontal",
+      left: "center",
+      top: 65,
     },
-    calendar: [
-      {
-        orient: "horizontal",
-        range: "2021",
+    calendar: {
+      top: 120,
+      left: 30,
+      right: 30,
+      cellSize: ["auto", 15],
+      range: year,
+      itemStyle: {
+        borderWidth: 0.5,
       },
-    ],
-    series: [
-      {
-        type: "heatmap",
-        coordinateSystem: "calendar",
-        calendarIndex: 0,
-        data: vidsPerDayHeatmapData,
-      },
-    ],
+      yearLabel: { show: false },
+    },
+    series: {
+      type: "heatmap",
+      coordinateSystem: "calendar",
+      data: vidsPerDayHeatmapData[year],
+    },
   });
 
-  return <EChartsReact option={option} />;
-  // return <button onClick={() => console.log(vidsPerDayHeatmapData)}>Test</button>;
+  return (
+    <>
+      <EChartsReact
+        option={option}
+        style={{
+          height: "100%",
+          width: 900,
+        }}
+      />
+
+      <button onClick={() => setYear("2019")}>Change Year</button>
+    </>
+  );
 };
