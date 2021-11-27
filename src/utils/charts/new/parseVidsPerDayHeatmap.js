@@ -27,5 +27,5 @@ export const parseVidsPerDayHeatmap = (watchHistoryData) => {
     dataFilteredByYear[year] = dta.map((d) => [d.date, d.total]);
   });
 
-  return dataFilteredByYear["2021"];
+  return dataFilteredByYear;
 };
