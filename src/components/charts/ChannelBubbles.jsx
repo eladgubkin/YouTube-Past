@@ -1,13 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { ChartsContext } from "../../contexts/ChartsContext";
-import {
-  select,
-  forceSimulation,
-  forceX,
-  forceY,
-  forceCollide,
-  scaleSqrt,
-} from "d3";
+import { select, forceSimulation, forceX, forceY, forceCollide, scaleSqrt } from "d3";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
