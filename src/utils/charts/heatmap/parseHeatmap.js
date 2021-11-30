@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export const parseVidsPerDayHeatmap = (watchHistoryData) => {
+export const parseHeatmap = (watchHistoryData) => {
   let data = watchHistoryData;
 
   const dataFilteredByYear = {};

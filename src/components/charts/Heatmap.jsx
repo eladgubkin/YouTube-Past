@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { ChartsContext } from "../../../contexts/ChartsContext";
-import { FilesContext } from "../../../contexts/FilesContext";
-import { parseVidsPerDayHeatmap } from "../../../utils/charts/new/parseVidsPerDayHeatmap";
+import { ChartsContext } from "../../contexts/ChartsContext";
+import { FilesContext } from "../../contexts/FilesContext";
+import { parseHeatmap } from "../../utils/charts/heatmap/parseHeatmap";
 import EChartsReact from "echarts-for-react";
 
-export const VidsPerDayHeatmap = () => {
+export const Heatmap = () => {
   const { watchHistoryData } = useContext(FilesContext);
-  const { vidsPerDayHeatmapData, setVidsPerDayHeatmapData } = useContext(ChartsContext);
+  const { heatmapData, setHeatmapData } = useContext(ChartsContext);
 
   useEffect(() => {
-    setVidsPerDayHeatmapData(parseVidsPerDayHeatmap(watchHistoryData));
+    setHeatmapData(parseHeatmap(watchHistoryData));
   }, []);
 
   const [year, setYear] = useState("2020");
@@ -43,7 +43,7 @@ export const VidsPerDayHeatmap = () => {
     series: {
       type: "heatmap",
       coordinateSystem: "calendar",
-      data: vidsPerDayHeatmapData[year],
+      data: heatmapData[year],
     },
   });
 
