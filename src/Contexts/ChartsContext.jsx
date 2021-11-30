@@ -1,32 +1,15 @@
-import React, { useState, createContext, useContext } from "react";
-import { FilesContext } from "./FilesContext";
-
-// DATA PARSING:
-import { parseWordCloudData } from "../utils/charts/wordCloud/parseWordCloudData";
-import { parseDayBarsData } from "../utils/charts/dayBars/parseDayBarsData";
-import { parseVideoBubblesData } from "../utils/charts/videoBubbles/parseVideoBubblesData";
-import { parseChannelBubblesData } from "../utils/charts/channelBubbles/parseChannelBubblesData";
-import { parseWorldMapData } from "../utils/charts/worldMap/parseWorldMapData";
+import React, { useState, createContext } from "react";
 
 export const ChartsContext = createContext();
-export const ChartsContextProvider = ({ children }) => {
-  const { watchHistoryData, searchHistoryData, locationHistoryData } = useContext(FilesContext);
 
-  const [wordCloudData] = useState(parseWordCloudData(searchHistoryData));
-  const [vidsPerDayHeatmapData, setVidsPerDayHeatmapData] = useState([]);
-  const [videoBubblesData] = useState(parseVideoBubblesData(watchHistoryData));
-  const [channelBubblesData] = useState(parseChannelBubblesData(watchHistoryData));
-  const [WorldMapData] = useState(parseWorldMapData(watchHistoryData, locationHistoryData));
+export const ChartsContextProvider = ({ children }) => {
+  const [heatmapData, setHeatmapData] = useState([]);
 
   return (
     <ChartsContext.Provider
       value={{
-        wordCloudData,
-        vidsPerDayHeatmapData,
-        setVidsPerDayHeatmapData,
-        videoBubblesData,
-        channelBubblesData,
-        WorldMapData,
+        heatmapData,
+        setHeatmapData,
       }}
     >
       {children}
