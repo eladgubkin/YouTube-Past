@@ -1,17 +1,11 @@
 import React, { useContext } from "react";
 import { FilesContext } from "../contexts/FilesContext";
-
 import { parseWatchHistoryFile } from "../utils/files/parseWatchHistoryFile";
 import { parseSearchHistoryFile } from "../utils/files/parseSearchHistoryFile";
 import { parseLocationHistoryFile } from "../utils/files/parseLocationHistoryFile";
-
-// Ui
 import { Navbar } from "../Components/ui/Navbar";
 import { Footer } from "../Components/ui/Footer";
-import { Explanation } from "../Components/ui/Explanation";
 import { Card } from "../components/ui/Card";
-
-// Dropzones
 
 export const LandingScreen = () => {
   const { setWatchHistoryData, setSearchHistoryData, setLocationHistoryData } =
