@@ -1,24 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ChartsContext } from "../../contexts/ChartsContext";
-import { FilesContext } from "../../contexts/FilesContext";
-import { parseHeatmap } from "../../utils/charts/heatmap/parseHeatmap";
+import React, { useState } from "react";
 import EChartsReact from "echarts-for-react";
 
-export const Heatmap = () => {
-  const { watchHistoryData } = useContext(FilesContext);
-  const { heatmapData, setHeatmapData } = useContext(ChartsContext);
-
-  useEffect(() => {
-    setHeatmapData(parseHeatmap(watchHistoryData));
-  }, []);
-
-  const [year, setYear] = useState("2020");
-
+export const Heatmap = ({ data, updateData }) => {
   const [option, setOption] = useState({
     title: {
       top: 30,
       left: "center",
-      text: "Daily Step Count",
+      text: "Daily Videos Count",
     },
     tooltip: {},
     visualMap: {
@@ -34,7 +22,7 @@ export const Heatmap = () => {
       left: 30,
       right: 30,
       cellSize: ["auto", 15],
-      range: year,
+      range: "2020",
       itemStyle: {
         borderWidth: 0.5,
       },
@@ -43,7 +31,7 @@ export const Heatmap = () => {
     series: {
       type: "heatmap",
       coordinateSystem: "calendar",
-      data: heatmapData[year],
+      data: data["2020"],
     },
   });
 
@@ -52,12 +40,33 @@ export const Heatmap = () => {
       <EChartsReact
         option={option}
         style={{
-          height: "100%",
           width: 900,
         }}
       />
 
-      <button onClick={() => setYear("2019")}>Change Year</button>
+      {Object.keys(data).map((year, i) => {
+        return (
+          <button
+            key={i}
+            onClick={() => {
+              setOption((prevOption) => ({
+                ...prevOption,
+                calendar: {
+                  ...prevOption.calendar,
+                  range: year,
+                },
+                series: {
+                  ...prevOption.series,
+                  data: data[year],
+                },
+              }));
+            }}
+            className="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          >
+            {year}
+          </button>
+        );
+      })}
     </>
   );
 };
