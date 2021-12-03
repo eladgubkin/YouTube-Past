@@ -1,32 +1,29 @@
 import React, { useState } from "react";
 import EChartsReact from "echarts-for-react";
+import moment from "moment";
 
 export const Heatmap = ({ data, updateData }) => {
   const [option, setOption] = useState({
-    title: {
-      top: 30,
-      left: "center",
-      text: "Daily Videos Count",
+    tooltip: {
+      formatter: ({ value }) => {
+        return `${value[1]} videos on ${moment(value[0]).format("MMM D, YYYY")}`;
+      },
     },
-    tooltip: {},
     visualMap: {
-      min: 0,
-      max: 100,
       type: "piecewise",
       orient: "horizontal",
       left: "center",
-      top: 65,
+      color: ["blue", "#012A4A", "#013A63", "#014F86", "#468FAF"],
     },
     calendar: {
-      top: 120,
-      left: 30,
-      right: 30,
       cellSize: ["auto", 15],
       range: "2020",
       itemStyle: {
-        borderWidth: 0.5,
+        borderWidth: 1,
+        borderColor: "transparent",
       },
       yearLabel: { show: false },
+      dayLabel: { show: false },
     },
     series: {
       type: "heatmap",
@@ -37,12 +34,7 @@ export const Heatmap = ({ data, updateData }) => {
 
   return (
     <>
-      <EChartsReact
-        option={option}
-        style={{
-          width: 900,
-        }}
-      />
+      <EChartsReact option={option} />
 
       {Object.keys(data).map((year, i) => {
         return (
