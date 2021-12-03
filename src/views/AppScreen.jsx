@@ -5,6 +5,7 @@ import { parseHeatmap } from "../utils/charts/heatmap/parseHeatmap";
 
 // Charts
 import { Heatmap } from "../components/charts/Heatmap";
+import { Scatter } from "../components/charts/Scatter";
 
 export const AppScreen = () => {
   const { watchHistoryData } = useContext(FilesContext);
@@ -13,7 +14,10 @@ export const AppScreen = () => {
   return (
     <>
       <Navbar />
-      <Heatmap data={heatmapData} updateData={setHeatmapData} />
+      <div style={{ width: 900 }}>
+        <Heatmap data={heatmapData} updateData={setHeatmapData} />
+        <Scatter />
+      </div>
     </>
   );
 };
