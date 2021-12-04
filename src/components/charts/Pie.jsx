@@ -3,35 +3,28 @@ import EChartsReact from "echarts-for-react";
 
 export const Pie = () => {
   const [option, setOption] = useState({
-    tooltip: {
-      trigger: "item",
-      formatter: "{a} <br/>{b} : {c} ({d}%)",
+    polar: {
+      radius: [30, "90%"],
     },
-
+    angleAxis: {
+      max: 80,
+      startAngle: 75,
+    },
+    radiusAxis: {
+      type: "category",
+      data: ["5+", 4, 3, 2, 1],
+    },
+    tooltip: {},
     series: {
-      type: "pie",
-      radius: [20, 140],
-      center: ["25%", "50%"],
-      roseType: "area",
-      itemStyle: {
-        borderRadius: 5,
-      },
+      type: "bar",
+      data: [9, 3, 9, 18, 60],
+      coordinateSystem: "polar",
       label: {
-        show: true,
+        show: false,
+        position: "middle",
+        formatter: "{b}: {c}",
       },
-      emphasis: {
-        label: {
-          show: true,
-        },
-      },
-      data: [
-        { value: 63, name: "1" },
-        { value: 18, name: "2" },
-        { value: 9, name: "3" },
-        { value: 4, name: "4" },
-        { value: 6, name: "More than 5" },
-      ],
     },
   });
-  return <EChartsReact option={option} style={{ width: 750 }} />;
+  return <EChartsReact option={option} style={{ width: 375 }} />;
 };
