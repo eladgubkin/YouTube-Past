@@ -34,7 +34,7 @@ export const Heatmap = ({ data, updateData }) => {
 
   return (
     <>
-      <EChartsReact option={option} />
+      <EChartsReact option={option} style={{ width: 750 }} />
 
       {Object.keys(data).map((year, i) => {
         return (
