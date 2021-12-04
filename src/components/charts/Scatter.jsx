@@ -238,7 +238,7 @@ export const Scatter = () => {
 
   return (
     <>
-      <EChartsReact option={option} />;
+      <EChartsReact option={option} style={{ width: 750 }} />
     </>
   );
 };
