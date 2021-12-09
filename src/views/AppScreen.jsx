@@ -7,16 +7,19 @@ import { Heatmap } from "../components/charts/Heatmap";
 import { Scatter } from "../components/charts/Scatter";
 import { Pie } from "../components/charts/Pie";
 import { Bars } from "../components/charts/Bars";
+import { ChannelBubbles } from "../components/charts/ChannelBubbles";
 
 // Chart Parsers
 import { parseHeatmap } from "../utils/charts/parseHeatmap";
 import { parseBars } from "../utils/charts/parseBars";
+import { parseBubbles } from "../utils/charts/parseBubbles";
 
 export const AppScreen = () => {
   const { watchHistoryData } = useContext(FilesContext);
 
   const [heatmapData, setHeatmapData] = useState(parseHeatmap(watchHistoryData));
-  const [BarsData, setBarsData] = useState(parseBars(watchHistoryData));
+  const [barsData, setBarsData] = useState(parseBars(watchHistoryData));
+  const [bubblesData, setBubblesData] = useState(parseBubbles(watchHistoryData));
 
   return (
     <>
@@ -27,11 +30,10 @@ export const AppScreen = () => {
         </section>
         <section className="flex flex-row">
           <Scatter />
-          <Bars data={BarsData} updateData={setBarsData} />
+          <Bars data={barsData} updateData={setBarsData} />
           <Pie />
         </section>
-
-        <button onClick={() => console.log(parseBars(watchHistoryData))}>Data</button>
+        <ChannelBubbles data={bubblesData} />
       </main>
     </>
   );
