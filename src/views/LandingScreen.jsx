@@ -14,7 +14,6 @@ export const LandingScreen = () => {
     <>
       <Navbar />
       <main className="md:container md:mx-auto">
-        {/* <Explanation /> */}
         <section className="flex ">
           <Card
             cardHeader="watch-history.json"
