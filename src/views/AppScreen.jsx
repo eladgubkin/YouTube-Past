@@ -29,7 +29,7 @@ export const AppScreen = () => {
           <Heatmap data={heatmapData} updateData={setHeatmapData} />
         </section>
         <section className="flex flex-row">
-          <Scatter />
+          {/* <Scatter /> */}
           <Bars data={barsData} updateData={setBarsData} />
           <Pie />
         </section>
