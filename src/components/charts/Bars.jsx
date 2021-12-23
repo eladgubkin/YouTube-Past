@@ -26,7 +26,7 @@ export const Bars = ({ data, updateData }) => {
     series: {
       name: "2011",
       type: "bar",
-      data: [45, 35, 26, 22, 24, 28, 38],
+      data: [15, 35, 24, 22, 24, 28, 38],
     },
   });
 
