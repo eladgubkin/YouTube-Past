@@ -4,7 +4,6 @@ import { parseWatchHistoryFile } from "../utils/files/parseWatchHistoryFile";
 import { parseSearchHistoryFile } from "../utils/files/parseSearchHistoryFile";
 import { parseLocationHistoryFile } from "../utils/files/parseLocationHistoryFile";
 import { Navbar } from "../Components/ui/Navbar";
-import { Footer } from "../Components/ui/Footer";
 import { Card } from "../components/ui/Card";
 
 export const LandingScreen = () => {
@@ -35,7 +34,6 @@ export const LandingScreen = () => {
           />
         </section>
       </main>
-      <Footer />
     </>
   );
 };
