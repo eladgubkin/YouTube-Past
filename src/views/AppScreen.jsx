@@ -23,17 +23,16 @@ export const AppScreen = () => {
 
   return (
     <>
-      <Navbar />
       <main className="flex flex-col gap-10">
         <section>
           <Heatmap data={heatmapData} updateData={setHeatmapData} />
         </section>
         <section className="flex flex-row">
-          {/* <Scatter /> */}
+          <Scatter />
           <Bars data={barsData} updateData={setBarsData} />
           <Pie />
         </section>
-        <ChannelBubbles data={bubblesData} />
+        {/* <ChannelBubbles data={bubblesData} /> */}
       </main>
     </>
   );
