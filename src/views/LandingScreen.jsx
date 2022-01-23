@@ -5,35 +5,19 @@ import { parseSearchHistoryFile } from "../utils/files/parseSearchHistoryFile";
 import { parseLocationHistoryFile } from "../utils/files/parseLocationHistoryFile";
 import { Navbar } from "../Components/ui/Navbar";
 import { Card } from "../components/ui/Card";
+import bg from "../components/ui/bg.svg";
 
 export const LandingScreen = () => {
   const { setWatchHistoryData, setSearchHistoryData, setLocationHistoryData } =
     useContext(FilesContext);
   return (
     <>
-      <Navbar />
-      <main className="md:container md:mx-auto">
-        <section className="flex">
-          <Card
-            cardHeader="watch-history.json"
-            cardTitle="Watch History"
-            setState={setWatchHistoryData}
-            parser={parseWatchHistoryFile}
-          />
-          <Card
-            cardHeader="search-history.json"
-            cardTitle="Search History"
-            setState={setSearchHistoryData}
-            parser={parseSearchHistoryFile}
-          />
-          <Card
-            cardHeader="location-history.json"
-            cardTitle="Location History"
-            setState={setLocationHistoryData}
-            parser={parseLocationHistoryFile}
-          />
-        </section>
-      </main>
+      <Card
+        cardHeader="watch-history.json"
+        cardTitle="Watch History"
+        setState={setWatchHistoryData}
+        parser={parseWatchHistoryFile}
+      />
     </>
   );
 };
