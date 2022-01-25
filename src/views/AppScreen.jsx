@@ -8,6 +8,7 @@ import { Scatter } from "../components/charts/Scatter";
 import { Pie } from "../components/charts/Pie";
 import { Bars } from "../components/charts/Bars";
 import { ChannelBubbles } from "../components/charts/ChannelBubbles";
+import { FirstPage } from "./FirstPage";
 
 // Chart Parsers
 import { parseHeatmap } from "../utils/charts/parseHeatmap";
@@ -24,14 +25,15 @@ export const AppScreen = () => {
   return (
     <>
       <main className="flex flex-col gap-10">
-        <section>
+        <FirstPage />
+        {/* <section>
           <Heatmap data={heatmapData} updateData={setHeatmapData} />
         </section>
         <section className="flex flex-row">
           <Scatter />
           <Bars data={barsData} updateData={setBarsData} />
           <Pie />
-        </section>
+        </section> */}
         {/* <ChannelBubbles data={bubblesData} /> */}
       </main>
     </>
