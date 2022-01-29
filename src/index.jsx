@@ -1,11 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { App } from "./App";
-import "tailwindcss/tailwind.css";
+import React from "react"; // React
+import ReactDOM from "react-dom"; // React
+import { RecoilRoot } from "recoil"; // Recoil
+import { App } from "./App"; // Component
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );
