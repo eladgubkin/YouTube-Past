@@ -1,7 +1,7 @@
-import _ from "lodash";
-import moment from "moment";
+import _ from "lodash"; // Lodash.js
+import moment from "moment"; // Moment.js
 
-export const parseWatchHistoryFile = (file, setWatchHistoryData) => {
+export const watchHistoryParser = (file, setState) => {
   const reader = new FileReader();
   reader.readAsText(file);
   reader.onload = () => {
@@ -29,6 +29,6 @@ export const parseWatchHistoryFile = (file, setWatchHistoryData) => {
     data = _.map(data, (video) => _.omit(video, ["subtitles", "products", "header"]));
 
     // setState
-    setWatchHistoryData(data);
+    setState(data);
   };
 };

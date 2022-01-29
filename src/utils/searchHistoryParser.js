@@ -1,7 +1,7 @@
-import _ from "lodash";
-import moment from "moment";
+import _ from "lodash"; // Lodash.js
+import moment from "moment"; // Moment.js
 
-export const parseSearchHistoryFile = (file, setSearchHistoryData) => {
+export const searchHistoryParser = (file, setState) => {
   const reader = new FileReader();
   reader.readAsText(file);
   reader.onload = () => {
@@ -30,6 +30,6 @@ export const parseSearchHistoryFile = (file, setSearchHistoryData) => {
     });
 
     // setState
-    setSearchHistoryData(data);
+    setState(data);
   };
 };
