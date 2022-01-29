@@ -1,14 +1,13 @@
-import React from "react";
-import { FilesContext, FilesContextProvider } from "./contexts/FilesContext";
-import { LandingScreen } from "./views/LandingScreen";
-import { AppScreen } from "./views/AppScreen";
+import React from "react"; // React
+import { useRecoilValue } from "recoil"; // Recoil
+import { watchHistoryAtom, searchHistoryAtom } from "./store/atoms"; // Atoms
+
+import { UploadPage } from "./pages/UploadPage"; // Component Page
+import { DashboardPage } from "./pages/DashboardPage"; // Component Page
 
 export const App = () => {
-  return (
-    <FilesContextProvider>
-      <FilesContext.Consumer>
-        {({ watchHistoryData }) => (!watchHistoryData?.length ? <LandingScreen /> : <AppScreen />)}
-      </FilesContext.Consumer>
-    </FilesContextProvider>
-  );
+  const watchHistory = useRecoilValue(watchHistoryAtom);
+  const searchHistory = useRecoilValue(searchHistoryAtom);
+
+  return <>{!watchHistory?.length ? <UploadPage /> : <DashboardPage />}</>;
 };
