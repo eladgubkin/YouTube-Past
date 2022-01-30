@@ -2,39 +2,13 @@ import { selector } from "recoil"; // Recoil
 import { watchHistoryAtom } from "./atoms"; // Atoms
 import _ from "lodash"; // Lodash
 
-export const mostViewedVideosList = selector({
-  key: "mostViewedVideosList",
+export const getTopChannelsIds = selector({
+  key: "getTopChannelsIds",
   get: ({ get }) => {
     const watchHistory = get(watchHistoryAtom);
 
     // Count every video
-    const asd = _.map(
-      _.countBy(
-        watchHistory.map((video) => ({
-          videoId: video.videoId,
-        })),
-        "videoId"
-      ),
-      (val, videoId) => ({
-        videoId: videoId,
-        viewCount: val,
-      })
-    );
-
-    // Get only top 50
-    const data = _.sortBy(asd, (e) => e.viewCount).slice(-50);
-
-    return data;
-  },
-});
-
-export const mostViewedChannelsList = selector({
-  key: "mostViewedChannelsList",
-  get: ({ get }) => {
-    const watchHistory = get(watchHistoryAtom);
-
-    // Count every video
-    const asd = _.map(
+    const countedList = _.map(
       _.countBy(
         watchHistory.map((video) => ({
           channelId: video.channelId,
@@ -48,8 +22,34 @@ export const mostViewedChannelsList = selector({
     );
 
     // Get only top 50
-    const data = _.sortBy(asd, (e) => e.viewCount).slice(-50);
+    const channelIds = _.sortBy(countedList, (e) => e.viewCount).slice(-50);
 
-    return data;
+    return channelIds;
+  },
+});
+
+export const getTopVideosIds = selector({
+  key: "getTopVideosIds",
+  get: ({ get }) => {
+    const watchHistory = get(watchHistoryAtom);
+
+    // Count every video
+    const countedList = _.map(
+      _.countBy(
+        watchHistory.map((video) => ({
+          videoId: video.videoId,
+        })),
+        "videoId"
+      ),
+      (val, videoId) => ({
+        videoId: videoId,
+        viewCount: val,
+      })
+    );
+
+    // Get only top 50
+    const videoIds = _.sortBy(countedList, (e) => e.viewCount).slice(-50);
+
+    return videoIds;
   },
 });
