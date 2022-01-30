@@ -3,10 +3,16 @@ import ReactDOM from "react-dom"; // React
 import { RecoilRoot } from "recoil"; // Recoil
 import { App } from "./App"; // Component
 
+import { QueryClient, QueryClientProvider } from "react-query"; // React Query
+
+const queryClient = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
