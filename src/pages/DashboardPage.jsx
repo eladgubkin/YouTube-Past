@@ -1,13 +1,20 @@
 import React from "react"; // React
-import { TopChannels } from "../components/DashboardPageComponents/TopChannels";
-import { TopVideos } from "../components/DashboardPageComponents/TopVideos";
+// import { Summary } from "../components/DashboardPageComponents/Summary"; // Component
+// import { Statistics } from "../components/DashboardPageComponents/Statistics"; // Component
+import { TopChannels } from "../components/DashboardPageComponents/TopChannels"; // Component
+import { TopVideos } from "../components/DashboardPageComponents/TopVideos"; // Component
+import { Navbar } from "../components/DashboardPageComponents/Navbar"; // Component
 
 export const DashboardPage = () => {
   return (
-    <main>
-      <h1>Dashboard</h1>
-      <TopChannels />
-      <TopVideos />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        {/* <Summary />/ */}
+        {/* <Statistics /> */}
+        <TopChannels />
+        <TopVideos />
+      </main>
+    </>
   );
 };
