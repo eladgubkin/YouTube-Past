@@ -32,6 +32,7 @@ export const TopChannels = () => {
           _.defaults(topChannel, {
             channelName: channel.snippet.title,
             desc: channel.snippet.description,
+            topics: channel.topicDetails.topicCategories.map((topic) => topic.slice(30)),
             subCount: channel.statistics.subscriberCount,
             videoCount: channel.statistics.videoCount,
             avatar: channel.snippet.thumbnails.high.url,
@@ -43,6 +44,34 @@ export const TopChannels = () => {
     return (
       <>
         <h1>TopChannels</h1>
+        {newData.map((channel, key) => {
+          return (
+            <div key={key} className="flex flex-col text-center items-center max-w-lg">
+              <img
+                src={channel.avatar}
+                alt="Avatar"
+                className="rounded-full border-solid border-white border-2 -mt-3 w-32"
+              />
+
+              <h1 className="text-sm bold font-sans">{channel.channelName}</h1>
+              <ul className="flex gap-3">
+                {channel.topics.map((topic, key) => {
+                  return (
+                    <li key={key} className="bg-gray-300 rounded px-3 py-1 whitespace-nowrap">
+                      {topic}
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="flex justify-center pb-3">
+                <span className="text-center mr-3 border-r pr-3">
+                  {channel.subCount} subscribers
+                </span>
+                <span className="text-center mr-3 border-r pr-3">{channel.videoCount} videos</span>
+              </div>
+            </div>
+          );
+        })}
         <button onClick={() => console.log(newData)}>newData</button>
       </>
     );
